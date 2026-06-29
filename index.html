@@ -770,7 +770,30 @@ in C, programming paradigms, structural networking fundamentals and various othe
         </div><a href="#" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
       </div>
     </div>
-
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
+  <text x="20" y="40" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">$ ./meow</text>
+  <text x="20" y="62" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">signal handler registered</text>
+  <text x="20" y="84" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">waiting... ^C</text>
+  <text x="20" y="106" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">SIGINT caught → /meow.wav</text>
+  <line x1="20" y1="116" x2="380" y2="116" stroke-dasharray="1 5"/>
+  <rect x="30" y="134" width="340" height="80" stroke-dasharray="2 4"/>
+  <text x="40" y="155" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">void handler(int sig) {"{}"}</text>
+  <text x="40" y="173" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">  if (sig == SIGINT)</text>
+  <text x="40" y="191" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">    play_audio("meow.wav");</text>
+  <path d="M 60 230 Q 80 210 100 230 Q 120 250 140 230" stroke-width="1.2"/>
+  <path d="M 160 230 Q 180 200 200 230 Q 220 260 240 230" stroke-width="1.2"/>
+  <path d="M 260 230 Q 280 215 300 230 Q 320 245 340 230" stroke-width="1.2"/>
+  <text x="200" y="280" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">audio waveform</text>
+</svg></div>
+      <div class="project-body">
+        <div class="project-name">Meow — POSIX Interrupt Signal Controller</div>
+        <div class="project-desc">Low-level utility intercepting native Linux terminal hooks, overriding SIGINT (Ctrl+C) via a custom POSIX signal handler linked to local audio playback.</div>
+        <div class="project-tags-row"><div class="project-tags">
+          <span class="project-tag">C</span><span class="project-tag">POSIX</span><span class="project-tag">Linux</span>
+        </div><a href="#" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
+      </div>
+    </div>
     <div class="project-card reveal reveal-delay-1">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <line x1="20" y1="60" x2="380" y2="60"/><line x1="20" y1="100" x2="380" y2="100"/>
@@ -1033,30 +1056,6 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-2">
-      <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
-  <text x="20" y="40" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">$ ./meow</text>
-  <text x="20" y="62" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">signal handler registered</text>
-  <text x="20" y="84" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">waiting... ^C</text>
-  <text x="20" y="106" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">SIGINT caught → /meow.wav</text>
-  <line x1="20" y1="116" x2="380" y2="116" stroke-dasharray="1 5"/>
-  <rect x="30" y="134" width="340" height="80" stroke-dasharray="2 4"/>
-  <text x="40" y="155" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">void handler(int sig) {"{}"}</text>
-  <text x="40" y="173" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">  if (sig == SIGINT)</text>
-  <text x="40" y="191" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">    play_audio("meow.wav");</text>
-  <path d="M 60 230 Q 80 210 100 230 Q 120 250 140 230" stroke-width="1.2"/>
-  <path d="M 160 230 Q 180 200 200 230 Q 220 260 240 230" stroke-width="1.2"/>
-  <path d="M 260 230 Q 280 215 300 230 Q 320 245 340 230" stroke-width="1.2"/>
-  <text x="200" y="280" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">audio waveform</text>
-</svg></div>
-      <div class="project-body">
-        <div class="project-name">Meow — POSIX Interrupt Signal Controller</div>
-        <div class="project-desc">Low-level utility intercepting native Linux terminal hooks, overriding SIGINT (Ctrl+C) via a custom POSIX signal handler linked to local audio playback.</div>
-        <div class="project-tags-row"><div class="project-tags">
-          <span class="project-tag">C</span><span class="project-tag">POSIX</span><span class="project-tag">Linux</span>
-        </div><a href="#" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
-      </div>
-    </div>
 
     <div class="project-card reveal">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
