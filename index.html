@@ -99,7 +99,31 @@
     pointer-events: none; z-index: 0; opacity: 0.4;
   }
 
-
+.projects-legend {
+  text-align: center;
+  margin-top: 48px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  color: var(--white3);
+}
+.projects-legend::before,
+.projects-legend::after {
+  content: '—';
+  color: var(--accent);
+  margin: 0 12px;
+}
+.projects-legend a {
+  color: var(--accent2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200,192,176,0.3);
+  transition: border-color .2s, color .2s;
+}
+.projects-legend a:hover {
+  color: var(--white);
+  border-color: var(--accent2);
+}
   .hero-content {
     position: relative; z-index: 1;
     width: 100%;
@@ -382,7 +406,17 @@
     font-size: .92rem; color: var(--white3); line-height: 1.75; flex: 1;
     margin-bottom: 18px; font-weight: 300;
   }
-
+.project-link-play {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+}
+.project-link-play:hover {
+  background: var(--accent2);
+  color: var(--black);
+  border-color: var(--accent2);
+  transform: rotate(-45deg);
+}
   .project-tags-row {
     display: flex; align-items: center; gap: 10px;
     flex-wrap: wrap;
@@ -593,7 +627,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
         I speak Arabic natively, English fluently, and French well. I'm looking for environments where
         craft is valued and depth is respected.
       </p>
-     <p>As a dedicated and hard-working professional, I am driven by a commitment to giving my absolute best to every project, consistently delivering high-quality results. I blend strong critical thinking and analytical problem-solving skills with high learning velocity, allowing me to master new technologies and adapt to changing environments with agility. A collaborative teammate at heart, I leverage strong communication and emotional intelligence to foster a positive, cohesive team dynamic. Furthermore, my solid understanding of project management principles ensures that I remain organized, meet tight deadlines, and effectively channel collective efforts toward achieving successful project outcomes.</p>
+     <p class="reveal reveal-delay-4">As a dedicated and hard-working professional, I am driven by a commitment to giving my absolute best to every project, consistently delivering high-quality results. I blend strong critical thinking and analytical problem-solving skills with high learning velocity, allowing me to master new technologies and adapt to changing environments with agility. A collaborative teammate at heart, I leverage strong communication and emotional intelligence to foster a positive, cohesive team dynamic. Furthermore, my solid understanding of project management principles ensures that I remain organized, meet tight deadlines, and effectively channel collective efforts toward achieving successful project outcomes.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:0;">
       <div class="stat-grid reveal reveal-delay-2">
@@ -757,7 +791,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
         <div class="project-desc">2D arcade game with custom particle physics, linear and radial camera tracking interpolation, and a sine-wave-modulated rhythmic intensity system.</div>
         <div class="project-tags-row"><div class="project-tags">
           <span class="project-tag">JavaScript</span><span class="project-tag">Canvas</span><span class="project-tag">WebGL</span>
-        </div><a href="https://moudzx.github.io/DarkShadows" target="_blank" rel="noopener" class="project-link" title="Play Game"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></a><a href="https://github.com/moudzx/DarkShadows/" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
+        </div><a href="https://moudzx.github.io/DarkShadows" target="_blank" rel="noopener" class="project-link project-link-play" title="Play Game"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></a><a href="https://github.com/moudzx/DarkShadows/" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
       </div>
     </div>
 
@@ -1149,7 +1183,8 @@ in C, programming paradigms, structural networking fundamentals and various othe
 
 
 
-  </div>
+</div>
+  <p class="projects-legend reveal">view more at <a href="https://github.com/moudzx" target="_blank" rel="noopener">github.com/moudzx</a></p>
 </section>
 
 <!-- CONTACT -->
