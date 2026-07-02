@@ -1181,7 +1181,47 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-
+    <div class="project-card reveal" data-category="low-level">
+      <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
+  <text x="20" y="30" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">add8s:  add al, bl</text>
+  <text x="20" y="48" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">        jo .overflowed   ; signed</text>
+  <text x="20" y="66" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">        jc .overflowed   ; unsigned</text>
+  <line x1="20" y1="78" x2="380" y2="78" stroke-dasharray="1 5"/>
+  <text x="35" y="98" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">int8</text>
+  <text x="105" y="98" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">int16</text>
+  <text x="175" y="98" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">int32</text>
+  <text x="250" y="98" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">sint8</text>
+  <text x="315" y="98" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">sint16</text>
+  <rect x="20" y="104" width="50" height="20"/>
+  <rect x="80" y="104" width="50" height="20"/>
+  <rect x="140" y="104" width="50" height="20"/>
+  <rect x="210" y="104" width="50" height="20" stroke-dasharray="2 3"/>
+  <rect x="270" y="104" width="50" height="20" stroke-dasharray="2 3"/>
+  <rect x="330" y="104" width="50" height="20" stroke-dasharray="2 3"/>
+  <line x1="20" y1="146" x2="380" y2="146" stroke-dasharray="1 5"/>
+  <text x="20" y="166" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">_overflow  (16-bit shift register)</text>
+  <rect x="20" y="174" width="340" height="24"/>
+  <line x1="41" y1="174" x2="41" y2="198"/><line x1="62" y1="174" x2="62" y2="198"/>
+  <line x1="83" y1="174" x2="83" y2="198"/><line x1="105" y1="174" x2="105" y2="198"/>
+  <line x1="126" y1="174" x2="126" y2="198"/><line x1="147" y1="174" x2="147" y2="198"/>
+  <line x1="169" y1="174" x2="169" y2="198"/><line x1="190" y1="174" x2="190" y2="198"/>
+  <line x1="211" y1="174" x2="211" y2="198"/><line x1="233" y1="174" x2="233" y2="198"/>
+  <line x1="254" y1="174" x2="254" y2="198"/><line x1="275" y1="174" x2="275" y2="198"/>
+  <line x1="296" y1="174" x2="296" y2="198"/><line x1="318" y1="174" x2="318" y2="198"/>
+  <line x1="339" y1="174" x2="339" y2="198"/>
+  <rect x="339" y="174" width="21" height="24" fill="rgba(200,192,176,0.1)"/>
+  <text x="349" y="190" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">1</text>
+  <text x="200" y="222" text-anchor="middle" font-size="8" fill="#c8c0b0" stroke="none" font-family="monospace">shl cx,1  →  or cx,1  →  overflowed() pops LSB</text>
+</svg></div>
+      <div class="project-body">
+        <div class="project-name">x86 Overflow-Aware Arithmetic Engine</div>
+        <div class="project-desc">Signed and unsigned 8/16/32-bit add/sub/mul in x86 Assembly and C, detecting overflow straight off CPU flags into a 16-bit shift register, exposed through a single C11 _Generic dispatch layer.</div>
+        <div class="project-tags-row"><div class="project-tags">
+          <span class="project-tag">C</span><span class="project-tag">x86 ASM</span><span class="project-tag">NASM</span>
+        </div><a href="https://github.com/moudzx/C-Integer-Overflow" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
+      </div>
+    </div>
+ 
 
 </div>
   <p class="projects-legend reveal">view more at <a href="https://github.com/moudzx" target="_blank" rel="noopener">github.com/moudzx</a></p>
