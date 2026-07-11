@@ -303,16 +303,18 @@
   #skills { background: var(--black); border-top: 1px solid var(--border); }
 
   .skills-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    display: flex; flex-direction: column;
     gap: 1px; background: var(--border);
     border: 1px solid var(--border);
   }
 
   .skill-category {
     background: var(--near-black);
-    padding: 28px;
+    padding: 24px 32px;
     transition: background .2s;
     position: relative; overflow: hidden;
+    display: flex; flex-direction: row; align-items: center;
+    gap: 32px;
   }
 .skill-category::before {
     content:''; position:absolute; top:0; left:0; right:0; height:1px;
@@ -327,13 +329,15 @@
   .skill-cat-title {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 500; font-size: .8rem; color: var(--accent);
-    margin-bottom: 16px; letter-spacing: .08em; text-transform: uppercase;
+    letter-spacing: .08em; text-transform: uppercase;
     position: relative; z-index: 1;
+    flex: 0 0 clamp(140px, 16vw, 210px);
   }
 
   .skill-tags {
     display: flex; flex-wrap: wrap; gap: 6px;
     position: relative; z-index: 1;
+    flex: 1; min-width: 0;
   }
   .skill-tag {
     font-size: .72rem; font-weight: 400;
@@ -348,6 +352,24 @@
 
   /* ─── PROJECTS ─── */
   #projects { background: var(--near-black); border-top: 1px solid var(--border); }
+
+  .projects-tabs {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 40px;
+  }
+  .projects-tab {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: .74rem; font-weight: 500; letter-spacing: .04em;
+    padding: 10px 20px;
+    background: transparent; color: var(--white3);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .projects-tab:hover { color: var(--white2); border-color: var(--border-h); }
+  .projects-tab.active {
+    background: var(--white); color: var(--black); border-color: var(--white);
+  }
 
   .projects-grid {
     display: grid;
@@ -371,6 +393,7 @@
   }
   .project-card:hover { background: var(--dark2); }
   .project-card:hover::after { transform: scaleY(1); }
+  .project-card.filtered-out { display: none; }
 
   .project-bg {
     width: 100%; overflow: hidden; flex-shrink: 0;
@@ -445,6 +468,59 @@ a.project-link.project-link-play:hover {
   .project-link:hover {
     background: var(--white); color: var(--black);
     border-color: var(--white); transform: rotate(45deg);
+  }
+
+  /* ─── CERTIFICATIONS ─── */
+  #certifications { background: var(--black); border-top: 1px solid var(--border); }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .cert-card {
+    background: var(--near-black);
+    padding: 24px 26px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    transition: background .2s;
+  }
+  .cert-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:1px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s ease;
+  }
+  .cert-card:hover { background: var(--dark2); }
+  .cert-card:hover::before { transform: scaleX(1); }
+
+  .cert-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400; color: var(--white);
+    margin-bottom: 6px; line-height: 1.3;
+  }
+  .cert-issuer {
+    font-size: .78rem; color: var(--accent); font-weight: 500;
+    letter-spacing: .04em; margin-bottom: 12px;
+  }
+  .cert-id {
+    font-size: .72rem; color: var(--white3); font-weight: 300;
+    margin-bottom: 16px; word-break: break-word;
+  }
+  .cert-link {
+    font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--white2); text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+    width: fit-content;
+    margin-top: auto;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .cert-link:hover {
+    background: var(--white); color: var(--black); border-color: var(--white);
   }
 
   /* ─── CONTACT ─── */
@@ -549,6 +625,9 @@ a.project-link.project-link-play:hover {
     .nav-links { display: none; }
     .stat-grid { grid-template-columns: 1fr 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .skill-category { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .skill-cat-title { flex: none; }
     footer { flex-direction: column; align-items: flex-start; }
   }
 
@@ -567,6 +646,7 @@ a.project-link.project-link-play:hover {
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -579,7 +659,7 @@ a.project-link.project-link-play:hover {
         Mohamad<br>
         <em>Mostafa</em>
       </h1>
-      <p class="hero-slogan">Computer Architecture, Operating Systems, Networking, Cybersecurity, Software Engineering, Relational Databases, and Full-Stack Web Development.</p>
+      <p class="hero-slogan">Systems Development</p>
       <div class="hero-cta">
       <a href="#about" class="btn btn-primary">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M13 6l6 6-6 6"/></svg>
@@ -685,6 +765,8 @@ in C, programming paradigms, structural networking fundamentals and various othe
         <span class="skill-tag">Json</span><span class="skill-tag">XML</span>
         <span class="skill-tag">Oracle PL/SQL</span><span class="skill-tag">NoSql</span>
         <span class="skill-tag">MySQL</span><span class="skill-tag">SQLite</span><span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Java Swing</span><span class="skill-tag">.NET WinForms</span>
+        <span class="skill-tag">Raylib</span>
       </div>
     </div>
     <div class="skill-category reveal reveal-delay-2">
@@ -712,47 +794,18 @@ in C, programming paradigms, structural networking fundamentals and various othe
        <span class="skill-tag">Operational Research</span>
       </div>
     </div>
-    <div class="skill-category reveal reveal-delay-2">
-      <div class="skill-cat-title">Networking & Security</div>
-      <div class="skill-tags">
-        <span class="skill-tag">CCNA R&S</span><span class="skill-tag">CyberOps</span>
-        <span class="skill-tag">Packet Tracer</span><span class="skill-tag">Wireshark</span>
-        <span class="skill-tag">IPv4 / IPv6</span><span class="skill-tag">Computer Networking: A Top Down Approach</span>
-        <span class="skill-tag">Network Programming</span><span class="skill-tag">Raw Sockets</span>
-        <span class="skill-tag">System Administration</span><span class="skill-tag">Cisco IOS</span>
-      </div>
-    </div>
-    <div class="skill-category reveal reveal-delay-3">
-      <div class="skill-cat-title">Graphics & Game Dev</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Java Swing</span><span class="skill-tag">.NET WinForms</span>
-        <span class="skill-tag">Raylib</span>
-        <span class="skill-tag">HTML5 Canvas</span><span class="skill-tag">2D Physics</span>
-       <span class="skill-tag">Multimedia</span>
-        <span class="skill-tag">FFmpeg</span><span class="skill-tag">Video Containers/Codecs</span>
-        <span class="skill-tag">Cinematics</span>
-       
-      </div>
-    </div>
-    <div class="skill-category reveal reveal-delay-1">
-      <div class="skill-cat-title">GIS & Spatial Computing</div>
-      <div class="skill-tags">
-        <span class="skill-tag">ArcGIS Pro</span><span class="skill-tag">Geodesy</span>
-        <span class="skill-tag">Helmert Transforms</span><span class="skill-tag">ECEF Coordinates</span>
-        <span class="skill-tag">Geographic Projections</span><span class="skill-tag">Spatial Analysis</span>
-        <span class="skill-tag">Coordinate Systems</span><span class="skill-tag">Datum Conversions</span>
-      </div>
-    </div>
+
+
     <div class="skill-category reveal reveal-delay-2">
       <div class="skill-cat-title">Tools & Environment</div>
       <div class="skill-tags">
         <span class="skill-tag">Linux</span>
         <span class="skill-tag">Windows</span>
         <span class="skill-tag">Git / GitHub</span><span class="skill-tag">Docker</span>
-        <span class="skill-tag">vim/nvim</span><span class="skill-tag">IntelliJ/NetBeans</span>
+        <span class="skill-tag">Cisco Packet Tracer</span><span class="skill-tag">IntelliJ/NetBeans</span>
         <span class="skill-tag">VS/VSCode</span><span class="skill-tag">ArcGIS Pro</span>
         <span class="skill-tag">Visual Paradigm</span><span class="skill-tag">Figma UI/UX</span>
-        <span class="skill-tag">Android Studio</span><span class="skill-tag">GDB</span>
+        <span class="skill-tag">Android Studio</span><span class="skill-tag">Wireshark</span>
         <span class="skill-tag">Microsoft Office</span>
       </div>
     </div>
@@ -764,8 +817,14 @@ in C, programming paradigms, structural networking fundamentals and various othe
   <p class="section-eyebrow reveal">What I've built</p>
   <h2 class="section-title reveal reveal-delay-1">Selected <em>Projects</em></h2>
   <p class="section-sub reveal reveal-delay-2">Engineering projects across systems, web, AI, databases, and graphics.</p>
+  <div class="projects-tabs reveal reveal-delay-3">
+    <button class="projects-tab" data-filter="os">mOStafa Operating System Project</button>
+    <button class="projects-tab" data-filter="web">Web Development</button>
+    <button class="projects-tab" data-filter="other">Games, Tools & Others</button>
+    <button class="projects-tab active" data-filter="all">All</button>
+  </div>
   <div class="projects-grid">
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-category="other">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <circle cx="200" cy="150" r="8" fill="#c8c0b0" stroke="none"/>
   <circle cx="200" cy="150" r="20" stroke-dasharray="2 4"/>
@@ -795,7 +854,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-category="web">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <circle cx="200" cy="150" r="80" stroke-dasharray="4 4"/>
   <line x1="200" y1="70" x2="200" y2="230"/><line x1="120" y1="150" x2="280" y2="150"/>
@@ -815,7 +874,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
         </div><a href="https://github.com/moudzx/MediCare" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
       </div>
     </div>
-    <div class="project-card reveal reveal-delay-2">
+    <div class="project-card reveal reveal-delay-2" data-category="os">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <text x="20" y="40" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">$ ./meow</text>
   <text x="20" y="62" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">signal handler registered</text>
@@ -839,7 +898,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
         </div><a href="https://github.com/moudzx/Meow" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
       </div>
     </div>
-    <div class="project-card reveal reveal-delay-1">
+    <div class="project-card reveal reveal-delay-1" data-category="os">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <line x1="20" y1="60" x2="380" y2="60"/><line x1="20" y1="100" x2="380" y2="100"/>
   <line x1="20" y1="140" x2="380" y2="140"/><line x1="20" y1="180" x2="380" y2="180"/>
@@ -863,7 +922,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-2">
+    <div class="project-card reveal reveal-delay-2" data-category="os">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <rect x="130" y="80" width="140" height="140" stroke-width="1.2"/>
   <rect x="155" y="105" width="90" height="90" stroke-dasharray="3 3"/>
@@ -889,7 +948,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-category="os">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <text x="30" y="60" font-size="11" fill="#c8c0b0" stroke="none" font-family="monospace">%d  %s  %x  %c</text>
   <text x="30" y="90" font-size="11" fill="#c8c0b0" stroke="none" font-family="monospace">printf("hello %s", name);</text>
@@ -911,7 +970,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-1">
+    <div class="project-card reveal reveal-delay-1" data-category="other">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <ellipse cx="200" cy="150" rx="160" ry="80" stroke-dasharray="4 4"/>
   <ellipse cx="200" cy="150" rx="160" ry="30"/>
@@ -936,7 +995,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-2">
+    <div class="project-card reveal reveal-delay-2" data-category="os">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <rect x="20" y="20" width="360" height="260" stroke-dasharray="2 6"/>
   <text x="30" y="50" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">[ 0.000000] kernel: module init</text>
@@ -959,7 +1018,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-category="web">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <rect x="30" y="40" width="340" height="220" rx="0"/>
   <rect x="30" y="40" width="340" height="30" fill="rgba(200,192,176,0.06)"/>
@@ -985,7 +1044,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-1">
+    <div class="project-card reveal reveal-delay-1" data-category="other">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <circle cx="80" cy="150" r="30"/>
   <circle cx="200" cy="80" r="30"/>
@@ -1013,7 +1072,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-2">
+    <div class="project-card reveal reveal-delay-2" data-category="other">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <text x="20" y="40" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">0x00400000: addi $t0, $zero, 5</text>
   <text x="20" y="58" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">0x00400004: lw   $t1, 0($sp)</text>
@@ -1043,7 +1102,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-category="other">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <circle cx="200" cy="40" r="18"/>
   <text x="200" y="45" text-anchor="middle" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">S</text>
@@ -1072,7 +1131,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-1">
+    <div class="project-card reveal reveal-delay-1" data-category="web">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <rect x="40" y="30" width="100" height="50" rx="0"/>
   <text x="90" y="52" text-anchor="middle" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">User</text>
@@ -1102,7 +1161,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
     </div>
 
 
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-category="other">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <rect x="20" y="20" width="360" height="180" stroke-dasharray="2 4"/>
   <line x1="20" y1="50" x2="380" y2="50" stroke-dasharray="1 4"/>
@@ -1127,7 +1186,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-1">
+    <div class="project-card reveal reveal-delay-1" data-category="web">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <rect x="30" y="160" width="340" height="80"/>
   <rect x="80" y="120" width="50" height="40"/>
@@ -1152,7 +1211,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal reveal-delay-2">
+    <div class="project-card reveal reveal-delay-2" data-category="web">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <text x="20" y="40" font-size="10" fill="#c8c0b0" stroke="none" font-family="monospace">&lt;?php</text>
   <text x="20" y="62" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">$query = "SELECT * FROM"</text>
@@ -1181,7 +1240,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal" data-category="low-level">
+    <div class="project-card reveal" data-category="os">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <text x="20" y="30" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">add8s:  add al, bl</text>
   <text x="20" y="48" font-size="9" fill="#c8c0b0" stroke="none" font-family="monospace">        jo .overflowed   ; signed</text>
@@ -1222,7 +1281,7 @@ in C, programming paradigms, structural networking fundamentals and various othe
       </div>
     </div>
 
-    <div class="project-card reveal" data-category="low-level">
+    <div class="project-card reveal" data-category="os">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <rect x="20" y="20" width="360" height="260" stroke-dasharray="2 6"/>
   <circle cx="34" cy="34" r="3" fill="#c8c0b0" stroke="none"/>
@@ -1255,6 +1314,87 @@ in C, programming paradigms, structural networking fundamentals and various othe
 
 </div>
   <p class="projects-legend reveal">view more at <a href="https://github.com/moudzx" target="_blank" rel="noopener">github.com/moudzx</a></p>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-eyebrow reveal">Verified credentials</p>
+  <h2 class="section-title reveal reveal-delay-1">Certifications</h2>
+  <p class="section-sub reveal reveal-delay-2">Coursework and industry certifications across systems, networking, security, and software engineering.</p>
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <div class="cert-name">Oracle Java Foundations</div>
+      <div class="cert-issuer">Oracle</div>
+      <div class="cert-id">Credential ID 163613</div>
+      <a href="https://mylearn.oracle.com/ou/learning-path/oracle-java-foundations-training-and-assessment-free/163613" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-name">Networking Devices and Initial Configuration</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-id">Credential ID 36977686-112c-4430-9047-e4f1874b2b3b</div>
+      <a href="https://www.credly.com/badges/36977686-112c-4430-9047-e4f1874b2b3b/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-name">Introduction to Cybersecurity</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-id">Credential ID 1e9cd6d2-9a95-49b0-adf9-23112311f824</div>
+      <a href="https://www.credly.com/badges/1e9cd6d2-9a95-49b0-adf9-23112311f824/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-3">
+      <div class="cert-name">Software Engineer</div>
+      <div class="cert-issuer">HackerRank</div>
+      <div class="cert-id">Credential ID b9469f2db0bc</div>
+      <a href="https://www.hackerrank.com/certificates/b9469f2db0bc" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-name">Networking Basics</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-id">Credential ID 37d121c8-227c-4095-9e89-038f2e5f5656</div>
+      <a href="https://www.credly.com/badges/df38e548-b736-4b4f-bb37-25b74de08ec4/linked_in_profile" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-name">Data Science &amp; Analytics</div>
+      <div class="cert-issuer">HP LIFE</div>
+      <div class="cert-id">Credential ID ad598b25-af1a-4733-a083-111fd2a724df</div>
+      <a href="https://www.life-global.org/certificate/ad598b25-af1a-4733-a083-111fd2a724df" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-name">Agile Project Management</div>
+      <div class="cert-issuer">HP LIFE</div>
+      <div class="cert-id">Credential ID ee9302e2-a68f-4985-a195-344c303e52ee</div>
+      <a href="https://www.life-global.org/certificate/ee9302e2-a68f-4985-a195-344c303e52ee" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-3">
+      <div class="cert-name">HP LIFE Ambassador Badge</div>
+      <div class="cert-issuer">HP LIFE</div>
+      <div class="cert-id">&nbsp;</div>
+      <a href="https://www.linkedin.com/in/moudzx/overlay/Certifications/834338031/treasury/?profileId=ACoAAGPXK8UBrnipdNSXsorvaPqR6aDyBjB1PvU" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-name">LFS101: Introduction to Linux</div>
+      <div class="cert-issuer">The Linux Foundation</div>
+      <div class="cert-id">Credential ID LF-oms8qdpam0</div>
+      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/193ee24d-5533-4bb5-91e8-67decf4462ed-mhamad-mostafa-c48c5afe-ef07-4acf-a679-3dba0e4ae965-certificate.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-name">Linux Essentials</div>
+      <div class="cert-issuer">NDG &amp; Cisco Networking Academy</div>
+      <div class="cert-id">Credential ID 21853a75-ea3d-4e79-b3c8-81bca52be8d3</div>
+      <a href="https://www.credly.com/badges/8ceeacdb-1d50-41aa-a833-11e3a5968c43/linked_in_profile" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-name">Linux Unhatched</div>
+      <div class="cert-issuer">NDG &amp; Cisco Networking Academy</div>
+      <div class="cert-id">Credential ID 49cb55d6-89c6-4a8a-80a5-69ba97023836</div>
+      <a href="https://www.credly.com/badges/634015d3-bc4a-4ca7-b064-2d5d2087f209/" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+    <div class="cert-card reveal reveal-delay-3">
+      <div class="cert-name">Critical Infrastructure Protection ICIP</div>
+      <div class="cert-issuer">OPSWAT Academy</div>
+      <div class="cert-id">Credential ID p-dJU7osPA</div>
+      <a href="https://learn.opswatacademy.com/certificate/p-dJU7osPA" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
@@ -1329,6 +1469,20 @@ in C, programming paradigms, structural networking fundamentals and various othe
     });
   }, { threshold: 0.4 });
   sections.forEach(s => secObs.observe(s));
+
+  const projectTabs = document.querySelectorAll('.projects-tab');
+  const projectCards = document.querySelectorAll('.project-card');
+  projectTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      projectTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.getAttribute('data-filter');
+      projectCards.forEach(card => {
+        const match = filter === 'all' || card.getAttribute('data-category') === filter;
+        card.classList.toggle('filtered-out', !match);
+      });
+    });
+  });
 
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mousemove', e => {
