@@ -364,6 +364,8 @@
     background: transparent; color: var(--white3);
     border: 1px solid var(--border);
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     transition: background .2s, color .2s, border-color .2s;
   }
   .projects-tab:hover { color: var(--white2); border-color: var(--border-h); }
@@ -659,7 +661,7 @@ a.project-link.project-link-play:hover {
         Mohamad<br>
         <em>Mostafa</em>
       </h1>
-      <p class="hero-slogan">Systems Development</p>
+      <p class="hero-slogan">Software Engineer</p>
       <div class="hero-cta">
       <a href="#about" class="btn btn-primary">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M13 6l6 6-6 6"/></svg>
@@ -818,12 +820,12 @@ in C, programming paradigms, structural networking fundamentals and various othe
   <h2 class="section-title reveal reveal-delay-1">Selected <em>Projects</em></h2>
   <p class="section-sub reveal reveal-delay-2">Engineering projects across systems, web, AI, databases, and graphics.</p>
   <div class="projects-tabs reveal reveal-delay-3">
-    <button class="projects-tab" data-filter="os">mOStafa Operating System Project</button>
-    <button class="projects-tab" data-filter="web">Web Development</button>
-    <button class="projects-tab" data-filter="other">Games, Tools & Others</button>
-    <button class="projects-tab active" data-filter="all">All</button>
+    <a href="#projects-mostafa" class="projects-tab" data-filter="os">mOStafa Operating System Project</a>
+    <a href="javascript:void(0)" class="projects-tab" data-filter="web">Web Development</a>
+    <a href="javascript:void(0)" class="projects-tab" data-filter="other">Games, Tools & Others</a>
+    <a href="javascript:void(0)" class="projects-tab active" data-filter="all">All</a>
   </div>
-  <div class="projects-grid">
+  <div class="projects-grid" id="projects-mostafa">
     <div class="project-card reveal" data-category="other">
       <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c8c0b0" stroke-width="0.8">
   <circle cx="200" cy="150" r="8" fill="#c8c0b0" stroke="none"/>
