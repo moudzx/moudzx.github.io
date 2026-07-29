@@ -1,9 +1,4 @@
-<div align="center">
-<img src="https://github.com/user-attachments/assets/2ca6e44d-829f-4880-881e-c2486bfa0db6" width="120"> &nbsp;&nbsp; 
-<img src="https://github.com/user-attachments/assets/8e28284d-1bed-4bce-886f-c8ec29053c32" width="120">
 
-### ⌣
-</div>
 
 <p align="center">
 <picture>
