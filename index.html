@@ -303,20 +303,19 @@
   #skills { background: var(--black); border-top: 1px solid var(--border); }
 
   .skills-grid {
-    display: flex; flex-direction: column;
+    display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 1px; background: var(--border);
     border: 1px solid var(--border);
   }
 
   .skill-category {
     background: var(--near-black);
-    padding: 24px 32px;
+    padding: 38px clamp(24px, 3vw, 40px);
     transition: background .2s;
     position: relative; overflow: hidden;
-    display: flex; flex-direction: row; align-items: center;
-    gap: 32px;
+    display: flex; flex-direction: column;
   }
-.skill-category::before {
+  .skill-category::before {
     content:''; position:absolute; top:0; left:0; right:0; height:1px;
     background: var(--accent);
     transform: scaleX(0); transform-origin: left;
@@ -326,22 +325,30 @@
   .skill-category:hover { background: var(--dark2); }
   .skill-category:hover::before { transform: scaleX(1); }
 
-  .skill-cat-title {
+  .skill-index {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 500; font-size: .8rem; color: var(--accent);
-    letter-spacing: .08em; text-transform: uppercase;
-    position: relative; z-index: 1;
-    flex: 0 0 clamp(140px, 16vw, 210px);
+    font-size: .7rem; font-weight: 500; color: var(--white3);
+    letter-spacing: .1em; margin-bottom: 14px;
+  }
+
+  .skill-cat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .skill-cat-desc {
+    font-size: .88rem; color: var(--white3); line-height: 1.7; font-weight: 300;
+    margin-bottom: 22px; max-width: 46ch;
   }
 
   .skill-tags {
-    display: flex; flex-wrap: wrap; gap: 6px;
+    display: flex; flex-wrap: wrap; gap: 8px;
     position: relative; z-index: 1;
-    flex: 1; min-width: 0;
   }
   .skill-tag {
     font-size: .72rem; font-weight: 400;
-    padding: 4px 10px;
+    padding: 5px 12px;
     background: transparent; color: var(--white3);
     border: 1px solid var(--border);
     transition: background .2s, color .2s, border-color .2s;
@@ -699,8 +706,7 @@ a.project-link.project-link-play:hover {
     .cert-stats { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
     .cert-grid { grid-template-columns: 1fr; }
-    .skill-category { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .skill-cat-title { flex: none; }
+    .skills-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; align-items: flex-start; }
   }
 
@@ -765,40 +771,33 @@ a.project-link.project-link-play:hover {
       <p class="section-eyebrow reveal">About me</p>
       <h2 class="section-title reveal reveal-delay-1">Built from the<br><em>ground up.</em></h2>
       <p class="reveal reveal-delay-2">
-        I'm a Computer Science B. Sc. degree holder from Lebanese University - Faculty of Sciences (Class of 2026, GPA 83/100) based in
-        Tripoli, Lebanon. My background spans the full vertical of software; from bare-metal assembly
-        and Linux internals all the way to web platforms, databases, and interactive graphics.
+        I'm a Computer Science B.Sc. from Lebanese University – Faculty of Sciences (Class of 2026, GPA 83/100), based in
+        Tripoli, Lebanon. My work spans the full stack — from bare-metal assembly and Linux internals to
+        web platforms, databases, and interactive graphics.
       </p>
       <p class="reveal reveal-delay-2">
         I'm drawn to problems that require understanding how things actually work, not just how to use
-        them. That's led me to build several <a href="#projects" id="projID">projects</a>, each with a different
-        set of constraints, and each built with care.
+        them. That's led to several <a href="#projects" id="projID">projects</a>, each built under a different
+        set of constraints, each built with care.
       </p>
-      <p class="reveal reveal-delay-3">
-        Outside of engineering, I work as a junior independent computer science teacher, instructing university peers and early-stage students in advanced data structures, systems programming
-in C, programming paradigms, structural networking fundamentals and various other subjects.
-        I speak Arabic natively, English fluently, and French well. I'm looking for environments where
-        craft is valued and depth is respected.
-      </p>
-     <p class="reveal reveal-delay-4">As a dedicated and hard-working professional, I am driven by a commitment to giving my absolute best to every project, consistently delivering high-quality results. I blend strong critical thinking and analytical problem-solving skills with high learning velocity, allowing me to master new technologies and adapt to changing environments with agility. A collaborative teammate at heart, I leverage strong communication and emotional intelligence to foster a positive, cohesive team dynamic. Furthermore, my solid understanding of project management principles ensures that I remain organized, meet tight deadlines, and effectively channel collective efforts toward achieving successful project outcomes.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:0;">
       <div class="stat-grid reveal reveal-delay-2">
         <div class="stat-card">
-          <div class="stat-num">20+</div>
-          <div class="stat-label">Engineering Projects</div>
-        </div>
-        <div class="stat-card">
           <div class="stat-num">83<span style="font-size:1.2rem">/100</span></div>
           <div class="stat-label">GPA</div>
+        </div>
+          <div class="stat-card">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Engineering Projects</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">10+</div>
           <div class="stat-label">Languages & Stacks</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">Open</div>
-          <div class="stat-label">To New Opportunities</div>
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Certifications</div>
         </div>
       </div>
       <div class="reveal reveal-delay-3" style="margin-top:12px;display:flex;justify-content:center;">
@@ -818,68 +817,51 @@ in C, programming paradigms, structural networking fundamentals and various othe
   <p class="section-sub reveal reveal-delay-2">A wide surface area - from x86 boot internals to React front-ends.</p>
   <div class="skills-grid">
     <div class="skill-category reveal">
-      <div class="skill-cat-title">Languages</div>
+      <div class="skill-index">01 / Systems & Infrastructure</div>
+      <div class="skill-cat-title">Where software meets the machine</div>
+      <p class="skill-cat-desc">Kernels, shells, and the wires between them — the layer beneath everything else I build.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Operating Systems</span><span class="skill-tag">Linux System Administration</span>
+        <span class="skill-tag">Assembly Language</span><span class="skill-tag">Shell Scripting</span>
+        <span class="skill-tag">Embedded Systems</span><span class="skill-tag">Networking</span>
+        <span class="skill-tag">Cybersecurity</span><span class="skill-tag">Compilers & Theory of Computation</span>
+      </div>
+    </div>
+    <div class="skill-category reveal reveal-delay-1">
+      <div class="skill-index">02 / Languages</div>
+      <div class="skill-cat-title">A toolbox, not a favorite hammer</div>
+      <p class="skill-cat-desc">Picked to fit the constraints of the problem, from register-level control to rapid prototyping.</p>
       <div class="skill-tags">
         <span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Rust</span>
         <span class="skill-tag">Java</span><span class="skill-tag">C#</span><span class="skill-tag">Python</span>
-        <span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">PHP</span><span class="skill-tag">MIPS32 RISC Assembly</span><span class="skill-tag">ARM RISC Assembly</span>
-        <span class="skill-tag">x86-64 CISC Assembly</span><span class="skill-tag">PL/SQL</span><span class="skill-tag">Prolog</span>
-      </div>
-    </div>
-    <div class="skill-category reveal reveal-delay-1">
-      <div class="skill-cat-title">Web & Full-Stack</div>
-      <div class="skill-tags">
-        <span class="skill-tag">React.js</span><span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Express</span><span class="skill-tag">ASP.NET Core</span>
-        <span class="skill-tag">ASP.NET WebForms</span><span class="skill-tag">REST APIs</span>
-        <span class="skill-tag">PHP (server-side)</span><span class="skill-tag">HTML5</span>
-        <span class="skill-tag">CSS3</span>
-        <span class="skill-tag">Json</span><span class="skill-tag">XML</span>
-        <span class="skill-tag">Oracle PL/SQL</span><span class="skill-tag">NoSql</span>
-        <span class="skill-tag">MySQL</span><span class="skill-tag">SQLite</span><span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Java Swing</span><span class="skill-tag">.NET WinForms</span>
-        <span class="skill-tag">Raylib</span>
+        <span class="skill-tag">PHP</span><span class="skill-tag">Prolog</span><span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">shell scripting</span> <span class="skill-tag">x86-x64 Assembly</span> <span class="skill-tag">MIPS Assembly</span>
+        <span class="skill-tag">Arduino</span>
       </div>
     </div>
     <div class="skill-category reveal reveal-delay-2">
-      <div class="skill-cat-title">Systems & Low-Level</div>
+      <div class="skill-index">03 / Applications & Interfaces</div>
+      <div class="skill-cat-title">Turning logic into something people can touch</div>
+      <p class="skill-cat-desc">Web back-ends and front-ends, desktop GUIs, and games — the layer users actually see.</p>
       <div class="skill-tags">
-        <span class="skill-tag">Linux Kernel Modules</span><span class="skill-tag">Syscalls</span>
-        <span class="skill-tag">Process / Thread Mgmt</span><span class="skill-tag">MPI</span>
-        <span class="skill-tag">OMP</span><span class="skill-tag">POSIX unistd</span>
-        <span class="skill-tag">Memory Management</span><span class="skill-tag">File Systems</span>
-        <span class="skill-tag">Concurrency</span><span class="skill-tag">Signal Handling</span>
-       <span class="skill-tag">Inter-Process Communication</span>
-        <span class="skill-tag">I/O Handling</span>
-        <span class="skill-tag">Boot Process</span><span class="skill-tag">x86 Internals</span>
+        <span class="skill-tag">Back-End Web Development</span><span class="skill-tag">Front-End Development</span>
+        <span class="skill-tag">ASP.NET</span><span class="skill-tag">Flask</span>
+        <span class="skill-tag">PHP Collection</span><span class="skill-tag">Relational Databases</span>
+        <span class="skill-tag">PL/SQL</span><span class="skill-tag">Graphical User Interface (GUI)</span>
+        <span class="skill-tag">Java Swing</span><span class="skill-tag">C# WinForms</span>
+        <span class="skill-tag">Raylib</span><span class="skill-tag">Game Development</span>
       </div>
     </div>
     <div class="skill-category reveal reveal-delay-1">
-      <div class="skill-cat-title">Math & Theory</div>
+      <div class="skill-index">04 / Foundations & Practice</div>
+      <div class="skill-cat-title">The structure underneath it all</div>
+      <p class="skill-cat-desc">Theory, math, and applied domains that shape how I design and reason about a system before writing a line of it.</p>
       <div class="skill-tags">
-        <span class="skill-tag">Data Structures</span><span class="skill-tag">Algorithms</span>
-        <span class="skill-tag">Linear Algebra</span><span class="skill-tag">Abstract Algebra</span>
-        <span class="skill-tag">Calculus</span><span class="skill-tag">Logic Gates</span>
-        <span class="skill-tag">Discrete Mathematics</span><span class="skill-tag">Propositional & Predicate Logic</span>
-        <span class="skill-tag">Automata Theory</span><span class="skill-tag">Formal Languages</span>
-        <span class="skill-tag">Compiler Design</span><span class="skill-tag">CSP</span><span class="skill-tag">Classical AI</span>
-       <span class="skill-tag">Operational Research</span>
-      </div>
-    </div>
-
-
-    <div class="skill-category reveal reveal-delay-2">
-      <div class="skill-cat-title">Tools & Environment</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Linux</span>
-        <span class="skill-tag">Windows</span>
-        <span class="skill-tag">Git / GitHub</span><span class="skill-tag">Docker</span>
-        <span class="skill-tag">Cisco Packet Tracer</span><span class="skill-tag">IntelliJ/NetBeans</span>
-        <span class="skill-tag">VS/VSCode</span><span class="skill-tag">ArcGIS Pro</span>
-        <span class="skill-tag">Visual Paradigm</span><span class="skill-tag">Figma UI/UX</span>
-        <span class="skill-tag">Android Studio</span><span class="skill-tag">Wireshark</span>
-        <span class="skill-tag">Microsoft Office</span>
+        <span class="skill-tag">Data Structures and Algorithms</span><span class="skill-tag">Discrete Mathematics</span>
+        <span class="skill-tag">Algebra</span><span class="skill-tag">Calculus</span>
+        <span class="skill-tag">Architectural Design</span><span class="skill-tag">Git</span>
+        <span class="skill-tag">Agentic AI Development</span><span class="skill-tag">Image Processing</span>
+        <span class="skill-tag">Geographic Information Systems (GIS)</span><span class="skill-tag">Project Management</span>
       </div>
     </div>
   </div>
