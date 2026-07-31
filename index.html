@@ -584,6 +584,12 @@ a.project-link.project-link-play:hover {
     font-size: .78rem; color: var(--accent); font-weight: 500;
     letter-spacing: .04em; margin-bottom: 12px;
   }
+  .cert-desc {
+    font-size: .82rem; color: var(--white2); font-weight: 300;
+    line-height: 1.55; margin-bottom: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
   .cert-id {
     font-size: .72rem; color: var(--white3); font-weight: 300;
     margin-bottom: 16px; word-break: break-word;
@@ -1393,7 +1399,48 @@ a.project-link.project-link-play:hover {
         </div><a href="https://github.com/moudzx/YoutubeDracula" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
       </div>
     </div>
- 
+
+    <div class="project-card reveal reveal-delay-1" data-category="other">
+      <div class="project-bg"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="ipBlob" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c8c0b0" stop-opacity="0.32"/>
+      <stop offset="70%" stop-color="#c8c0b0" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#c8c0b0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ipRing" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#c8c0b0" stop-opacity="0"/>
+      <stop offset="78%" stop-color="#c8c0b0" stop-opacity="0.45"/>
+      <stop offset="90%" stop-color="#c8c0b0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g stroke="#c8c0b0" stroke-width="0.7" fill="none">
+    <rect x="20" y="20" width="170" height="120"/>
+    <rect x="210" y="20" width="170" height="120"/>
+    <rect x="20" y="160" width="170" height="120"/>
+    <rect x="210" y="160" width="170" height="120"/>
+  </g>
+  <circle cx="105" cy="80" r="42" fill="url(#ipBlob)" stroke="none"/>
+  <path d="M255 40 a40 40 0 0 1 0 80 Z" fill="rgba(200,192,176,0.28)" stroke="none"/>
+  <path d="M255 40 a40 40 0 0 0 0 80 Z" fill="rgba(200,192,176,0.06)" stroke="none"/>
+  <path d="M65 220 a40 40 0 0 1 80 0 Z" fill="rgba(200,192,176,0.28)" stroke="none"/>
+  <path d="M65 220 a40 40 0 0 0 80 0 Z" fill="rgba(200,192,176,0.06)" stroke="none"/>
+  <circle cx="295" cy="220" r="42" fill="url(#ipRing)" stroke="none"/>
+  <g fill="#c8c0b0" font-size="8" font-family="monospace" stroke="none">
+    <text x="30" y="132">original f(x,y)</text>
+    <text x="220" y="132">Sobel X</text>
+    <text x="30" y="272">Sobel Y</text>
+    <text x="220" y="272">|grad| magnitude</text>
+  </g>
+</svg></div>
+      <div class="project-body">
+        <div class="project-name">Image Processing Toolkit</div>
+        <div class="project-desc">24-bit BMP filter library and JPEG-recovery tool in C (grayscale, reflect, blur, Sobel edge detection), plus a Python/matplotlib toolkit covering spatial filtering, edge detection, histogram analysis, intensity windowing, and thresholding.</div>
+        <div class="project-tags-row"><div class="project-tags">
+          <span class="project-tag">C</span><span class="project-tag">Python</span><span class="project-tag">matplotlib</span>
+        </div><a href="https://github.com/moudzx/Image-processing" target="_blank" rel="noopener" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a></div>
+      </div>
+    </div>
 
 </div>
   <p class="projects-legend reveal">view more at <a href="https://github.com/moudzx" target="_blank" rel="noopener">github.com/moudzx</a></p>
@@ -1426,141 +1473,25 @@ a.project-link.project-link-play:hover {
     <a href="javascript:void(0)" class="cert-tab" data-cert-filter="networking">Networking</a>
     <a href="javascript:void(0)" class="cert-tab" data-cert-filter="linux">Linux</a>
     <a href="javascript:void(0)" class="cert-tab" data-cert-filter="software">Software</a>
-    <a href="javascript:void(0)" class="cert-tab" data-cert-filter="ai">AI/Data</a>
-    <a href="javascript:void(0)" class="cert-tab" data-cert-filter="business">Business</a>
+    <a href="javascript:void(0)" class="cert-tab" data-cert-filter="ai">AI</a>
+    <a href="javascript:void(0)" class="cert-tab" data-cert-filter="other">Others</a>
   </div>
 
   <div class="cert-grid">
-    <div class="cert-card reveal" data-cert-category="software">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L3 12l5 6M16 6l5 6-5 6"/></svg></div>
-        <span class="cert-category">Software</span>
-      </div>
-      <div class="cert-name">Oracle Java Foundations</div>
-      <div class="cert-issuer">Oracle</div>
-      <div class="cert-id">Credential ID 163613</div>
-      <a href="https://www.linkedin.com/in/moudzx/overlay/Certifications/1267053152/treasury/?profileId=ACoAAGPXK8UBrnipdNSXsorvaPqR6aDyBjB1PvU" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-1" data-cert-category="security software">
+
+    <div class="cert-card reveal" data-cert-category="networking security">
       <div class="cert-top">
         <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <span class="cert-category">Security · Software</span>
+        <span class="cert-category">Networking · Security</span>
       </div>
-      <div class="cert-name">LFD121: Developing Secure Software</div>
-      <div class="cert-issuer">OpenSSF & The Linux Foundation</div>
-      <div class="cert-id">Credential ID 2049b056-f8c9-4c22-85be-642c42477c55</div>
-      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/193ee24d-5533-4bb5-91e8-67decf4462ed-mhamad-mostafa-9f41cf76-c427-4ca4-aea5-6b36908c4fab-certificate.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+      <div class="cert-name">Cisco CCIE Security v6</div>
+      <div class="cert-issuer">Udemy</div>
+      <div class="cert-desc">Advanced Cisco security architecture, including firewalls, VPNs, identity services, and network security design at an expert level.</div>
+      <div class="cert-id">Credential ID UC-f821be13-65f8-4bac-955b-4663431c5255</div>
+      <a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-f821be13-65f8-4bac-955b-4663431c5255.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
     </div>
-    <div class="cert-card reveal reveal-delay-2" data-cert-category="networking">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.3L11 16.2M16.2 7.3L13 16.2M8.2 6h7.6"/></svg></div>
-        <span class="cert-category">Networking</span>
-      </div>
-      <div class="cert-name">Networking Devices and Initial Configuration</div>
-      <div class="cert-issuer">Cisco Networking Academy</div>
-      <div class="cert-id">Credential ID 36977686-112c-4430-9047-e4f1874b2b3b</div>
-      <a href="https://www.credly.com/badges/36977686-112c-4430-9047-e4f1874b2b3b/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-3" data-cert-category="security">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <span class="cert-category">Security</span>
-      </div>
-      <div class="cert-name">Introduction to Cybersecurity</div>
-      <div class="cert-issuer">Cisco Networking Academy</div>
-      <div class="cert-id">Credential ID 1e9cd6d2-9a95-49b0-adf9-23112311f824</div>
-      <a href="https://www.credly.com/badges/1e9cd6d2-9a95-49b0-adf9-23112311f824/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal" data-cert-category="security">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <span class="cert-category">Security</span>
-      </div>
-      <div class="cert-name">Endpoint Security</div>
-      <div class="cert-issuer">Cisco Networking Academy</div>
-      <div class="cert-id">Credential ID e1e4c770-7ade-4056-8050-032efded7e3b</div>
-      <a href="https://www.credly.com/badges/e1e4c770-7ade-4056-8050-032efded7e3b/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-1" data-cert-category="software">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L3 12l5 6M16 6l5 6-5 6"/></svg></div>
-        <span class="cert-category">Software</span>
-      </div>
-      <div class="cert-name">Software Engineer</div>
-      <div class="cert-issuer">HackerRank</div>
-      <div class="cert-id">Credential ID b9469f2db0bc</div>
-      <a href="https://www.hackerrank.com/certificates/b9469f2db0bc" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-2" data-cert-category="networking">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.3L11 16.2M16.2 7.3L13 16.2M8.2 6h7.6"/></svg></div>
-        <span class="cert-category">Networking</span>
-      </div>
-      <div class="cert-name">Networking Basics</div>
-      <div class="cert-issuer">Cisco Networking Academy</div>
-      <div class="cert-id">Credential ID 37d121c8-227c-4095-9e89-038f2e5f5656</div>
-      <a href="https://www.credly.com/badges/df38e548-b736-4b4f-bb37-25b74de08ec4/linked_in_profile" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-3" data-cert-category="ai">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg></div>
-        <span class="cert-category">AI/Data</span>
-      </div>
-      <div class="cert-name">Data Science &amp; Analytics</div>
-      <div class="cert-issuer">HP LIFE</div>
-      <div class="cert-id">Credential ID ad598b25-af1a-4733-a083-111fd2a724df</div>
-      <a href="https://www.life-global.org/certificate/ad598b25-af1a-4733-a083-111fd2a724df" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal" data-cert-category="business">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M7 16v-4M12 16V8M17 16v-7"/></svg></div>
-        <span class="cert-category">Business</span>
-      </div>
-      <div class="cert-name">Agile Project Management</div>
-      <div class="cert-issuer">HP LIFE</div>
-      <div class="cert-id">Credential ID ee9302e2-a68f-4985-a195-344c303e52ee</div>
-      <a href="https://www.life-global.org/certificate/ee9302e2-a68f-4985-a195-344c303e52ee" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-1" data-cert-category="linux">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9l3 3-3 3M12 15h5"/></svg></div>
-        <span class="cert-category">Linux</span>
-      </div>
-      <div class="cert-name">LFS101: Introduction to Linux</div>
-      <div class="cert-issuer">The Linux Foundation</div>
-      <div class="cert-id">Credential ID LF-oms8qdpam0</div>
-      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/193ee24d-5533-4bb5-91e8-67decf4462ed-mhamad-mostafa-c48c5afe-ef07-4acf-a679-3dba0e4ae965-certificate.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-2" data-cert-category="linux">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9l3 3-3 3M12 15h5"/></svg></div>
-        <span class="cert-category">Linux</span>
-      </div>
-      <div class="cert-name">Linux Essentials</div>
-      <div class="cert-issuer">NDG &amp; Cisco Networking Academy</div>
-      <div class="cert-id">Credential ID 21853a75-ea3d-4e79-b3c8-81bca52be8d3</div>
-      <a href="https://www.credly.com/badges/8ceeacdb-1d50-41aa-a833-11e3a5968c43/linked_in_profile" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal reveal-delay-3" data-cert-category="linux">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9l3 3-3 3M12 15h5"/></svg></div>
-        <span class="cert-category">Linux</span>
-      </div>
-      <div class="cert-name">Linux Unhatched</div>
-      <div class="cert-issuer">NDG &amp; Cisco Networking Academy</div>
-      <div class="cert-id">Credential ID 49cb55d6-89c6-4a8a-80a5-69ba97023836</div>
-      <a href="https://www.credly.com/badges/634015d3-bc4a-4ca7-b064-2d5d2087f209/" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
-    <div class="cert-card reveal" data-cert-category="security">
-      <div class="cert-top">
-        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <span class="cert-category">Security</span>
-      </div>
-      <div class="cert-name">Critical Infrastructure Protection ICIP</div>
-      <div class="cert-issuer">OPSWAT Academy</div>
-      <div class="cert-id">Credential ID p-dJU7osPA</div>
-      <a href="https://learn.opswatacademy.com/certificate/p-dJU7osPA" target="_blank" rel="noopener" class="cert-link">Show credential</a>
-    </div>
+
+
     <div class="cert-card reveal reveal-delay-1" data-cert-category="linux">
       <div class="cert-top">
         <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9l3 3-3 3M12 15h5"/></svg></div>
@@ -1568,36 +1499,203 @@ a.project-link.project-link-play:hover {
       </div>
       <div class="cert-name">LFD103: Linux Kernel Development</div>
       <div class="cert-issuer">The Linux Foundation</div>
+      <div class="cert-desc">A practical dive into kernel internals, including building kernel modules, understanding the kernel build process, and low-level systems programming.</div>
       <div class="cert-id">Credential ID LF-q0fs79h3wp</div>
       <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/193ee24d-5533-4bb5-91e8-67decf4462ed-mhamad-mostafa-fc547a6d-cd06-491d-8af4-f8d140dc2293-certificate.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
     </div>
-    <div class="cert-card reveal reveal-delay-2" data-cert-category="networking security">
+
+
+    <div class="cert-card reveal reveal-delay-2" data-cert-category="software">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L3 12l5 6M16 6l5 6-5 6"/></svg></div>
+        <span class="cert-category">Software</span>
+      </div>
+      <div class="cert-name">Software Engineer</div>
+      <div class="cert-issuer">HackerRank</div>
+      <div class="cert-desc">Verified assessment covering data structures, algorithms, and problem-solving across multiple languages under timed conditions.</div>
+      <div class="cert-id">Credential ID b9469f2db0bc</div>
+      <a href="https://www.hackerrank.com/certificates/b9469f2db0bc" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal" data-cert-category="security software">
       <div class="cert-top">
         <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <span class="cert-category">Networking · Security</span>
+        <span class="cert-category">Security · Software</span>
       </div>
-      <div class="cert-name">Cisco CCIE Security v6</div>
-      <div class="cert-issuer">Udemy</div>
-      <div class="cert-id">Credential ID UC-f821be13-65f8-4bac-955b-4663431c5255</div>
-      <a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-f821be13-65f8-4bac-955b-4663431c5255.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+      <div class="cert-name">LFD121: Developing Secure Software</div>
+      <div class="cert-issuer">OpenSSF & The Linux Foundation</div>
+      <div class="cert-desc">Secure development lifecycle practices, including threat modeling, secure design, common vulnerability classes, and mitigation techniques for building software defensively.</div>
+      <div class="cert-id">Credential ID 2049b056-f8c9-4c22-85be-642c42477c55</div>
+      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/193ee24d-5533-4bb5-91e8-67decf4462ed-mhamad-mostafa-9f41cf76-c427-4ca4-aea5-6b36908c4fab-certificate.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
     </div>
+
+
+    <div class="cert-card reveal reveal-delay-2" data-cert-category="software">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L3 12l5 6M16 6l5 6-5 6"/></svg></div>
+        <span class="cert-category">Software</span>
+      </div>
+      <div class="cert-name">Oracle Java Foundations</div>
+      <div class="cert-issuer">Oracle</div>
+      <div class="cert-desc">Core Java syntax, OOP principles, control flow, and program structure, covering the foundation-level track in Oracle's official certification path.</div>
+      <div class="cert-id">Credential ID 163613</div>
+      <a href="https://www.linkedin.com/in/moudzx/overlay/Certifications/1267053152/treasury/?profileId=ACoAAGPXK8UBrnipdNSXsorvaPqR6aDyBjB1PvU" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal reveal-delay-3" data-cert-category="networking">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.3L11 16.2M16.2 7.3L13 16.2M8.2 6h7.6"/></svg></div>
+        <span class="cert-category">Networking</span>
+      </div>
+      <div class="cert-name">Networking Devices and Configuration</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-desc">Hands-on setup of routers and switches, covering IOS, device configuration, and  connectivity troubleshooting.</div>
+      <div class="cert-id">Credential ID 36977686-112c-4430-9047-e4f1874b2b3b</div>
+      <a href="https://www.credly.com/badges/36977686-112c-4430-9047-e4f1874b2b3b/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal" data-cert-category="security">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <span class="cert-category">Security</span>
+      </div>
+      <div class="cert-name">Introduction to Cybersecurity</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-desc">Fundamentals of cyber threats, attacker tactics, and defensive concepts, offering an entry-level overview of the security landscape.</div>
+      <div class="cert-id">Credential ID 1e9cd6d2-9a95-49b0-adf9-23112311f824</div>
+      <a href="https://www.credly.com/badges/1e9cd6d2-9a95-49b0-adf9-23112311f824/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal reveal-delay-2" data-cert-category="security">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <span class="cert-category">Security</span>
+      </div>
+      <div class="cert-name">Endpoint Security</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-desc">Protecting devices at the network edge, including malware defense, endpoint hardening, and monitoring techniques for client-side security.</div>
+      <div class="cert-id">Credential ID e1e4c770-7ade-4056-8050-032efded7e3b</div>
+      <a href="https://www.credly.com/badges/e1e4c770-7ade-4056-8050-032efded7e3b/public_url" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal reveal-delay-3" data-cert-category="networking">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.3L11 16.2M16.2 7.3L13 16.2M8.2 6h7.6"/></svg></div>
+        <span class="cert-category">Networking</span>
+      </div>
+      <div class="cert-name">Networking Basics</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-desc">Core networking concepts, including OSI/TCP-IP models, IP addressing, and the fundamentals of how data moves across a network.</div>
+      <div class="cert-id">Credential ID 37d121c8-227c-4095-9e89-038f2e5f5656</div>
+      <a href="https://www.credly.com/badges/df38e548-b736-4b4f-bb37-25b74de08ec4/linked_in_profile" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal" data-cert-category="other">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h3v3.5a1.5 1.5 0 003 0V4h3v3a1.5 1.5 0 000 3v3h-3a1.5 1.5 0 000 3h3v3h-3v-3.5a1.5 1.5 0 00-3 0V19H9v-3a1.5 1.5 0 000-3H6v-3h3a1.5 1.5 0 000-3V4z"/></svg></div>
+        <span class="cert-category">Others</span>
+      </div>
+      <div class="cert-name">Data Science &amp; Analytics</div>
+      <div class="cert-issuer">HP LIFE</div>
+      <div class="cert-desc">Introductory data science workflow, covering collecting, cleaning, analyzing, and visualizing data to support business decision-making.</div>
+      <div class="cert-id">Credential ID ad598b25-af1a-4733-a083-111fd2a724df</div>
+      <a href="https://www.life-global.org/certificate/ad598b25-af1a-4733-a083-111fd2a724df" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal reveal-delay-2" data-cert-category="other">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h3v3.5a1.5 1.5 0 003 0V4h3v3a1.5 1.5 0 000 3v3h-3a1.5 1.5 0 000 3h3v3h-3v-3.5a1.5 1.5 0 00-3 0V19H9v-3a1.5 1.5 0 000-3H6v-3h3a1.5 1.5 0 000-3V4z"/></svg></div>
+        <span class="cert-category">Others</span>
+      </div>
+      <div class="cert-name">Agile Project Management</div>
+      <div class="cert-issuer">HP LIFE</div>
+      <div class="cert-desc">Agile and Scrum fundamentals, including sprint planning, iterative delivery, and team collaboration practices for managing projects.</div>
+      <div class="cert-id">Credential ID ee9302e2-a68f-4985-a195-344c303e52ee</div>
+      <a href="https://www.life-global.org/certificate/ee9302e2-a68f-4985-a195-344c303e52ee" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal reveal-delay-3" data-cert-category="linux">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9l3 3-3 3M12 15h5"/></svg></div>
+        <span class="cert-category">Linux</span>
+      </div>
+      <div class="cert-name">LFS101: Introduction to Linux</div>
+      <div class="cert-issuer">The Linux Foundation</div>
+      <div class="cert-desc">Linux fundamentals, including filesystem hierarchy, shell usage, process management, and system administration basics across major distributions.</div>
+      <div class="cert-id">Credential ID LF-oms8qdpam0</div>
+      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/193ee24d-5533-4bb5-91e8-67decf4462ed-mhamad-mostafa-c48c5afe-ef07-4acf-a679-3dba0e4ae965-certificate.pdf" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal reveal-delay-2" data-cert-category="linux">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9l3 3-3 3M12 15h5"/></svg></div>
+        <span class="cert-category">Linux</span>
+      </div>
+      <div class="cert-name">Linux Essentials</div>
+      <div class="cert-issuer">NDG &amp; Cisco Networking Academy</div>
+      <div class="cert-desc">Command-line proficiency, including file permissions, package management, text processing, and everyday Linux administration tasks.</div>
+      <div class="cert-id">Credential ID 21853a75-ea3d-4e79-b3c8-81bca52be8d3</div>
+      <a href="https://www.credly.com/badges/8ceeacdb-1d50-41aa-a833-11e3a5968c43/linked_in_profile" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal reveal-delay-3" data-cert-category="linux">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 9l3 3-3 3M12 15h5"/></svg></div>
+        <span class="cert-category">Linux</span>
+      </div>
+      <div class="cert-name">Linux Unhatched</div>
+      <div class="cert-issuer">NDG &amp; Cisco Networking Academy</div>
+      <div class="cert-desc">Beginner-level introduction to the Linux operating system, terminal navigation, and open-source computing concepts.</div>
+      <div class="cert-id">Credential ID 49cb55d6-89c6-4a8a-80a5-69ba97023836</div>
+      <a href="https://www.credly.com/badges/634015d3-bc4a-4ca7-b064-2d5d2087f209/" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
+    <div class="cert-card reveal" data-cert-category="security">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <span class="cert-category">Security</span>
+      </div>
+      <div class="cert-name">Critical Infrastructure Protection ICIP</div>
+      <div class="cert-issuer">OPSWAT Academy</div>
+      <div class="cert-desc">Security practices for industrial control systems and critical infrastructure, focused on threat awareness and protective strategies for OT environments.</div>
+      <div class="cert-id">Credential ID p-dJU7osPA</div>
+      <a href="https://learn.opswatacademy.com/certificate/p-dJU7osPA" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
+
+
     <div class="cert-card reveal" data-cert-category="ai">
       <div class="cert-top">
         <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg></div>
-        <span class="cert-category">AI/Data</span>
+        <span class="cert-category">AI</span>
       </div>
-      <div class="cert-name">AI Training Hackathon — Kanz AI</div>
+      <div class="cert-name">AI Training Hackathon: Kanz AI</div>
       <div class="cert-issuer">LAU Academy of Continuing Education &amp; Kanz</div>
+      <div class="cert-desc">Applied AI training hackathon recognizing hands-on project work, having built and presented YoutubeDracula as the featured submission.</div>
       <div class="cert-id">Certificate Id: KANZ-ADV-5108</div>
-      <div class="cert-id">Featured Project: YoutubeDracula — Streamlining Media Extraction and Processing</div>
+      <div class="cert-id">Featured Project: YoutubeDracula, Streamlining Media Extraction and Processing</div>
+      <a href="https://try.ka.nz/ai/mohamadmostafa" target="_blank" rel="noopener" class="cert-link">Show credential</a>
     </div>
+
+
     <div class="cert-card reveal reveal-delay-1" data-cert-category="security">
       <div class="cert-top">
         <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <span class="cert-category">Security</span>
       </div>
-      <div class="cert-name">CS50's Introduction to Cybersecurity</div>
+      <div class="cert-name">CS50's Cybersecurity</div>
       <div class="cert-issuer">Harvard University</div>
+      <div class="cert-desc">Harvard's CS50 track on cybersecurity, covering cryptography, software security, network protection, and privacy fundamentals.</div>
       <div class="cert-id">Credential ID f099ff51-6b54-43ad-bd5a-eaa6ac384c00</div>
       <a href="https://cs50.harvard.edu/certificates/f099ff51-6b54-43ad-bd5a-eaa6ac384c00" target="_blank" rel="noopener" class="cert-link">Show credential</a>
     </div>
