@@ -126,7 +126,7 @@
   .hero {
     min-height: 100vh;
     display: flex; align-items: center;
-    padding: 0 clamp(24px, 8vw, 120px);
+    padding: 96px clamp(24px, 8vw, 120px) 40px;
     position: relative; overflow: hidden;
   }
 
@@ -793,7 +793,7 @@ a.project-link.project-link-play:hover {
   @media (max-width: 860px) {
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .nav-links { gap: 20px; }
-    .hero-content { flex-direction: column-reverse; align-items: flex-start; gap: 32px; padding-top: 100px; padding-bottom: 60px; }
+    .hero-content { flex-direction: column-reverse; align-items: flex-start; gap: 32px; padding-bottom: 60px; }
     .hero-portrait-wrap { width: clamp(160px, 50vw, 260px); align-self: auto; }
   }
   @media (max-width: 640px) {
@@ -920,8 +920,8 @@ a.project-link.project-link-play:hover {
   <p class="section-sub reveal reveal-delay-2">Roles, responsibilities, and what I built.</p>
   <div class="experience-card reveal reveal-delay-3">
     <div class="experience-top">
-      <div class="experience-role">Technical Lead &amp; Mentor</div>
-      <div class="experience-date">2026 &ndash; Present</div>
+      <div class="experience-role">Technical Operations Lead</div>
+      <div class="experience-date">2026 &ndash; (Seasonal)</div>
     </div>
     <div class="experience-org-row">
       <div class="experience-logo" title="NASA Space Apps Challenge"><svg width="428" height="428" viewBox="0 0 428 428" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -951,7 +951,7 @@ a.project-link.project-link-play:hover {
 </svg></div>
       <div class="experience-org">NASA Space Apps, Tripoli</div>
     </div>
-    <p class="experience-desc">Own technical operations for Tripoli's first NASA Space Apps Challenge chapter: built and maintain the event website end to end, from design through deployment. Mentor participating teams through the hackathon weekend, guiding them on web development, data tooling, and problem scoping.</p>
+    <p class="experience-desc">Coordinated with the local organizers to ensure readiness for NASA’s first Space Apps Challenge hackathon infrastructure in Tripoli. And owned technical operations, including building, maintaining and deploying the event website.</p>
     <a href="https://spaceapps-tripoli.pages.dev/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(200,192,176,0.3);font-size:.85rem;letter-spacing:.04em;transition:border-color .2s, color .2s;width:fit-content;">
       spaceapps-tripoli.pages.dev
       <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
@@ -1024,11 +1024,11 @@ a.project-link.project-link-play:hover {
 
   <div class="cert-stats reveal reveal-delay-2">
     <div class="cert-stat">
-      <div class="cert-stat-num">19</div>
+      <div class="cert-stat-num">20</div>
       <div class="cert-stat-label">Credentials</div>
     </div>
     <div class="cert-stat">
-      <div class="cert-stat-num">12</div>
+      <div class="cert-stat-num">13</div>
       <div class="cert-stat-label">Issuing Bodies</div>
     </div>
     <div class="cert-stat">
@@ -1049,6 +1049,18 @@ a.project-link.project-link-play:hover {
   </div>
 
   <div class="cert-grid">
+
+    <div class="cert-card reveal" data-cert-category="ai">
+      <div class="cert-top">
+        <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg></div>
+        <span class="cert-category">AI</span>
+      </div>
+      <div class="cert-name">AWS Certified AI Practitioner</div>
+      <div class="cert-issuer">Amazon Web Services (AWS)</div>
+      <div class="cert-desc">AWS's foundational-level certification validating knowledge of AI, ML, and generative AI concepts, applications of foundation models, and responsible, secure use of AI solutions on AWS.</div>
+      <div class="cert-id">Issued September 2026</div>
+      <a href="https://www.linkedin.com/in/moudzx/details/certifications/" target="_blank" rel="noopener" class="cert-link">Show credential</a>
+    </div>
 
     <div class="cert-card reveal" data-cert-category="software web">
       <div class="cert-top">
