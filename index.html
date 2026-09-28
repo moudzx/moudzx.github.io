@@ -310,6 +310,8 @@
   }
   .contact-detail-link:hover { color: var(--accent2); }
 
+  .net-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
   footer {
     padding: 24px clamp(24px, 8vw, 120px); border-top: 1px solid var(--border);
     font-size: .8rem; color: var(--muted);
@@ -1028,6 +1030,7 @@
 
 <section id="contact">
   <div class="contact-inner">
+    <canvas class="net-bg" aria-hidden="true"></canvas>
     <h2 class="contact-title">Let's build <em>something.</em></h2>
     <p class="contact-sub">
       Open to engineering roles, freelance projects, and interesting collaborations.
@@ -1132,6 +1135,76 @@
       card.addEventListener('focusout', stop);
     }
   });
+})();
+
+/* Contact background: drifting network with data packets, reacts to the cursor */
+(function () {
+  var hero = document.querySelector('.contact-inner'); if (!hero) return;
+  var cv = hero.querySelector('.net-bg'); if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d'), reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0, pts = [], packets = [], LINK = 130;
+  var mouse = { x: -999, y: -999 }, rgb = '138,114,80', frame = 0, running = false;
+  function readColor() {
+    var c = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+    var m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(c);
+    if (m) rgb = parseInt(m[1], 16) + ',' + parseInt(m[2], 16) + ',' + parseInt(m[3], 16);
+  }
+  function near(i) {
+    var out = [], a = pts[i];
+    for (var j = 0; j < pts.length; j++) if (j !== i && Math.hypot(a.x - pts[j].x, a.y - pts[j].y) < LINK) out.push(j);
+    return out;
+  }
+  function resize() {
+    var r = hero.getBoundingClientRect(); W = r.width; H = r.height;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.min(70, Math.round(W * H / 16000)); pts = [];
+    for (var i = 0; i < n; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28, r: 1 + Math.random() * 1.4 });
+    packets = []; for (var k = 0; k < Math.min(5, n); k++) packets.push({ a: k, b: (k * 7 + 3) % n, t: Math.random() });
+    readColor(); step();
+  }
+  function step() {
+    if (frame++ % 60 === 0) readColor();
+    ctx.clearRect(0, 0, W, H);
+    var i, j, a, b, d, dx, dy;
+    for (i = 0; i < pts.length; i++) {
+      a = pts[i];
+      if (!reduce || !running) { /* positions only advance while animating */ }
+      if (running) {
+        dx = a.x - mouse.x; dy = a.y - mouse.y; d = Math.hypot(dx, dy);
+        if (d < 110 && d > 0) { a.x += dx / d * (110 - d) * .012; a.y += dy / d * (110 - d) * .012; }
+        a.x += a.vx; a.y += a.vy;
+        if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1;
+      }
+    }
+    ctx.lineWidth = 1;
+    for (i = 0; i < pts.length; i++) {
+      a = pts[i];
+      for (j = i + 1; j < pts.length; j++) {
+        b = pts[j]; d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < LINK) { ctx.strokeStyle = 'rgba(' + rgb + ',' + ((1 - d / LINK) * .3).toFixed(3) + ')'; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+      }
+      d = Math.hypot(a.x - mouse.x, a.y - mouse.y);
+      if (d < 170) { ctx.strokeStyle = 'rgba(' + rgb + ',' + ((1 - d / 170) * .5).toFixed(3) + ')'; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke(); }
+      ctx.fillStyle = 'rgba(' + rgb + ',.55)'; ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.283); ctx.fill();
+    }
+    packets.forEach(function (p) {
+      if (running) p.t += .014;
+      if (p.t >= 1) { p.a = p.b; var nb = near(p.a); p.b = nb.length ? nb[Math.floor(Math.random() * nb.length)] : (p.a + 1) % pts.length; p.t = 0; }
+      var A = pts[p.a], B = pts[p.b]; if (!A || !B) return;
+      var x = A.x + (B.x - A.x) * p.t, y = A.y + (B.y - A.y) * p.t;
+      ctx.fillStyle = 'rgba(' + rgb + ',.18)'; ctx.beginPath(); ctx.arc(x, y, 6, 0, 6.283); ctx.fill();
+      ctx.fillStyle = 'rgba(' + rgb + ',.95)'; ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 6.283); ctx.fill();
+    });
+  }
+  function loop() { if (!running) return; step(); requestAnimationFrame(loop); }
+  function start() { if (reduce || running) return; running = true; requestAnimationFrame(loop); }
+  function stop() { running = false; }
+  hero.addEventListener('pointermove', function (e) { var r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+  hero.addEventListener('pointerleave', function () { mouse.x = mouse.y = -999; });
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(hero); else window.addEventListener('resize', resize);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es[0].isIntersecting ? start() : stop(); }).observe(hero); else start();
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+  resize();
 })();
 </script>
 </body>
