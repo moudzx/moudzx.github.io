@@ -133,9 +133,9 @@
     animation: heroGlow 14s ease-in-out infinite alternate;
   }
   .hero::after {
-    content: ''; position: absolute; top: 0; bottom: 0; left: -40%; width: 40%; pointer-events: none;
-    opacity: .07; background: linear-gradient(100deg, transparent 0%, var(--accent) 50%, transparent 100%);
-    animation: heroSweep 16s ease-in-out infinite;
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .16; transform: translateX(-100%);
+    background: linear-gradient(105deg, transparent 38%, var(--accent) 50%, transparent 62%);
+    animation: heroSweep 8s ease-out 1s infinite;
   }
   .hero-content { position: relative; z-index: 1; }
   .hero-title, .hero-role, .hero-cta, .hero-portrait {
@@ -147,7 +147,7 @@
   .hero-portrait { animation: heroIn 1.1s cubic-bezier(.22,.61,.36,1) .3s forwards, heroFloat 9s ease-in-out 1.4s infinite alternate; }
   @keyframes heroIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
   @keyframes heroFloat { from { transform: translateY(0); } to { transform: translateY(-8px); } }
-  @keyframes heroSweep { 0% { transform: translateX(0); } 60%, 100% { transform: translateX(350%); } }
+  @keyframes heroSweep { 0% { transform: translateX(-100%); } 16%, 100% { transform: translateX(100%); } }
   @keyframes heroGlow { from { transform: translate(0, 0) scale(1); } to { transform: translate(-40px, 24px) scale(1.12); } }
   @media (prefers-reduced-motion: reduce) {
     .hero::before, .hero::after, .hero-title, .hero-role, .hero-cta, .hero-portrait { animation: none !important; opacity: 1; }
