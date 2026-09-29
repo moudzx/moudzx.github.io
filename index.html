@@ -698,7 +698,7 @@
       <h3>Myshell</h3>
       <p>Minimal Unix shell with pipes, redirection and background jobs.</p>
       <div class="project-foot"><span class="project-tags">C, Unix</span>
-        <span class="project-links"><button type="button" class="link demo-btn" id="shellBtn" aria-haspopup="dialog">Simulate</button><a class="link" href="https://github.com/moudzx/Myshell" target="_blank" rel="noopener">Code</a></span></div></div>
+        <span class="project-links"><button type="button" class="link demo-btn" id="shellBtn" aria-haspopup="dialog">Demo</button><a class="link" href="https://github.com/moudzx/Myshell" target="_blank" rel="noopener">Code</a></span></div></div>
     </article>
 
     <article class="project">
@@ -707,7 +707,7 @@
       <h3>CPU Scheduling Visualizer</h3>
       <p>Animated Gantt charts for FCFS, SJF, Round Robin and Priority scheduling.</p>
       <div class="project-foot"><span class="project-tags">C, Raylib</span>
-        <span class="project-links"><button type="button" class="link demo-btn" id="schedBtn" aria-haspopup="dialog">Simulate</button><a class="link" href="https://github.com/moudzx/CPU-Scheduler-visualizer" target="_blank" rel="noopener">Code</a></span></div></div>
+        <span class="project-links"><button type="button" class="link demo-btn" id="schedBtn" aria-haspopup="dialog">Demo</button><a class="link" href="https://github.com/moudzx/CPU-Scheduler-visualizer" target="_blank" rel="noopener">Code</a></span></div></div>
     </article>
 
     <article class="project">
@@ -813,7 +813,7 @@
       <h3>Parallel Distributed File Search</h3>
       <p>Text search across nodes (MPI) and threads (OpenMP), using raw getdents64.</p>
       <div class="project-foot"><span class="project-tags">C, MPI, OpenMP</span>
-        <span class="project-links"><button type="button" class="link demo-btn" id="parBtn" aria-haspopup="dialog">Simulate</button><a class="link" href="https://github.com/moudzx/Parallel-programming" target="_blank" rel="noopener">Code</a></span></div></div>
+        <span class="project-links"><button type="button" class="link demo-btn" id="parBtn" aria-haspopup="dialog">Demo</button><a class="link" href="https://github.com/moudzx/Parallel-programming" target="_blank" rel="noopener">Code</a></span></div></div>
     </article>
 
     <article class="project">
@@ -822,7 +822,7 @@
       <h3>Helmert Geodetic Transformer</h3>
       <p>7-parameter coordinate transforms in Java Swing and C.</p>
       <div class="project-foot"><span class="project-tags">Java, C</span>
-        <span class="project-links"><button type="button" class="link demo-btn" id="helBtn" aria-haspopup="dialog">Simulate</button><a class="link" href="https://github.com/moudzx/Helmert-transformation" target="_blank" rel="noopener">Code</a></span></div></div>
+        <span class="project-links"><button type="button" class="link demo-btn" id="helBtn" aria-haspopup="dialog">Demo</button><a class="link" href="https://github.com/moudzx/Helmert-transformation" target="_blank" rel="noopener">Code</a></span></div></div>
     </article>
 
     <article class="project">
@@ -1057,7 +1057,7 @@
       <h3>MIPS32 Cryptographic Memory Maze</h3>
       <p>Bare-metal utility mixing MIPS32 assembly and C.</p>
       <div class="project-foot"><span class="project-tags">MIPS32, C</span>
-        <span class="project-links"><a class="link" href="https://github.com/moudzx/CryptArithmetic-MIPS32-Assembly" target="_blank" rel="noopener">Code</a></span></div></div>
+        <span class="project-links"><button type="button" class="link demo-btn" id="cryBtn" aria-haspopup="dialog">Demo</button><a class="link" href="https://github.com/moudzx/CryptArithmetic-MIPS32-Assembly" target="_blank" rel="noopener">Code</a></span></div></div>
     </article>
 
     <article class="project">
@@ -1066,7 +1066,7 @@
       <h3>Image Processing Toolkit</h3>
       <p>BMP filters and edge detection in C, plus a Python analysis toolkit.</p>
       <div class="project-foot"><span class="project-tags">C, Python</span>
-        <span class="project-links"><a class="link" href="https://github.com/moudzx/Image-processing" target="_blank" rel="noopener">Code</a></span></div></div>
+        <span class="project-links"><button type="button" class="link demo-btn" id="imgBtn" aria-haspopup="dialog">Demo</button><a class="link" href="https://github.com/moudzx/Image-processing" target="_blank" rel="noopener">Code</a></span></div></div>
     </article>
 
   </div>
@@ -1152,6 +1152,16 @@
 <dialog class="video-dialog" id="rpDialog" aria-label="rprintf demo">
   <button type="button" class="video-close" id="rpClose" aria-label="Close demo">&times;</button>
   <iframe id="rpFrame" title="rprintf demo"></iframe>
+</dialog>
+
+<dialog class="video-dialog" id="imgDialog" aria-label="Image processing demo">
+  <button type="button" class="video-close" id="imgClose" aria-label="Close demo">&times;</button>
+  <iframe id="imgFrame" title="Image processing demo"></iframe>
+</dialog>
+
+<dialog class="video-dialog" id="cryDialog" aria-label="Cryptographic memory maze demo">
+  <button type="button" class="video-close" id="cryClose" aria-label="Close demo">&times;</button>
+  <iframe id="cryFrame" title="Cryptographic memory maze demo"></iframe>
 </dialog>
 
 <template id="ofSrc">
@@ -1341,12 +1351,16 @@ button:hover{border-color:var(--accent)}
 button.sel{background:var(--on);color:var(--onfg);border-color:var(--on)}
 input{font:inherit;font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:7px 14px;min-width:0}
 input:focus{outline:none;border-color:var(--accent)}
-.vars{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr) 54px 32px;gap:8px 10px;align-items:center}
+.vars{display:grid;gap:8px}
+.vrow{display:grid;grid-template-columns:minmax(0,110px) minmax(0,1fr) 128px 32px;gap:8px;align-items:center}
+select{font:inherit;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:8px 10px;min-width:0;width:100%;cursor:pointer}
+select:focus{outline:none;border-color:var(--accent)}
+select.bad{border-color:var(--bad);color:var(--bad)}
+.vrow .err{grid-column:1/-1;font-size:12px;color:var(--bad);margin:-2px 0 2px 4px}
+@media (max-width:560px){.vrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 32px;grid-template-areas:"n v x" "t t t"}.vrow .nm{grid-area:n}.vrow .val{grid-area:v}.vrow select{grid-area:t}.vrow .x{grid-area:x}}
 .vars input.nm{transition:background .2s,color .2s,border-color .2s}
 .vars input.nm.hit{background:var(--on);color:var(--onfg);border-color:var(--on)}
 .vars input.nm.bad{border-color:var(--bad);color:var(--bad)}
-.vars .ty{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted)}
-.vars .ty.bad{color:var(--bad)}
 .vars button.x{width:32px;height:32px;padding:0;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center}
 button.add{font-family:ui-monospace,Menlo,monospace;font-size:13px}
 .fmt{width:100%}
@@ -1373,12 +1387,12 @@ button.add{font-family:ui-monospace,Menlo,monospace;font-size:13px}
 <div class="card">
 <div class="lbl">let(name, value)</div>
 <div class="vars" id="vars"></div>
-<div class="row" style="margin-top:12px"><button class="add" id="add">+ let</button><span class="hint">Edit names and values, add or remove variables. Whole numbers are ints, numbers with a decimal point (3.14) are doubles, anything else is a string. Redefining a name overwrites it, like a second <span class="mono">let</span>.</span></div>
+<div class="row" style="margin-top:12px"><button class="add" id="add">+ let</button><span class="hint">Edit names and values, pick a type for each (or leave it on <span class="mono">auto</span>), add or remove variables. Auto reads <span class="mono">26</span> as int, <span class="mono">3.14</span> as double, <span class="mono">true</span> as bool, <span class="mono">0xff</span> as hex, <span class="mono">'A'</span> as char, anything else as a string. Redefining a name overwrites it, like a second <span class="mono">let</span>.</span></div>
 </div>
 
 <div class="card">
 <div class="lbl">Format string</div>
-<input id="fmt" class="fmt" spellcheck="false" autocomplete="off" value="hello {name}, you are {age} years old\n">
+<input id="fmt" class="fmt" spellcheck="false" autocomplete="off" value="hello {name}, you are {age} years old, grade {grade}, admin={admin}, mask={mask}\n">
 <div class="chips" id="chips"></div>
 <div class="row" style="margin-top:14px">
 <button id="step">Step</button>
@@ -1397,11 +1411,72 @@ button.add{font-family:ui-monospace,Menlo,monospace;font-size:13px}
 try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const V=[{n:'age',v:'26'},{n:'name',v:'Moss'}];
+const V=[{n:'age',v:'26',t:'auto'},{n:'name',v:'Moss',t:'auto'},{n:'grade',v:'A',t:'char'},{n:'pi',v:'3.14159',t:'double'},{n:'admin',v:'true',t:'bool'},{n:'mask',v:'255',t:'hex'}];
+const TYPES=['auto','int','unsigned','long','double','char','bool','char *','hex','void *'];
 let toks=[],idx=0,buf='',timer=null,hit=null,miss=false;
 
-const kind=v=>{v=v.trim();return /^-?\d+$/.test(v)?'int':/^-?(\d+\.\d*|\.\d+)$/.test(v)?'float':'str'};
-const show=v=>kind(v)==='str'?'"'+v+'"':v.trim();
+const I=/^[-+]?\d+$/,F=/^[-+]?(\d+\.?\d*|\.\d+)([eE][-+]?\d+)?$/,H=/^0x[0-9a-f]+$/i;
+function detect(s){
+  if(I.test(s)){const n=BigInt(s);return n>=-2147483648n&&n<=2147483647n?'int':'long'}
+  if(F.test(s))return 'double';
+  if(/^(true|false)$/i.test(s))return 'bool';
+  if(H.test(s))return 'hex';
+  if(/^'.'$/.test(s))return 'char';
+  return 'char *';
+}
+const BAD=(t,why)=>({ok:false,type:t,err:why});
+function conv(x){
+  const raw=x.v,s=raw.trim();
+  const t=x.t==='auto'||!x.t?detect(s):x.t;
+  switch(t){
+    case 'int':{
+      if(!I.test(s))return BAD(t,'not a whole number');
+      const b=BigInt.asIntN(32,BigInt(s));
+      return {ok:true,type:t,ctype:'int',fn:'itoa',out:String(b),lit:String(b),note:b!==BigInt(s)?'wrapped to 32 bits':''};
+    }
+    case 'unsigned':{
+      if(!I.test(s))return BAD(t,'not a whole number');
+      const b=BigInt.asUintN(32,BigInt(s));
+      return {ok:true,type:t,ctype:'unsigned int',fn:'utoa',out:String(b),lit:b+'u',note:b!==BigInt(s)?'wrapped to 32 bits':''};
+    }
+    case 'long':{
+      if(!I.test(s))return BAD(t,'not a whole number');
+      const b=BigInt.asIntN(64,BigInt(s));
+      return {ok:true,type:t,ctype:'long',fn:'ltoa',out:String(b),lit:b+'L',note:b!==BigInt(s)?'wrapped to 64 bits':''};
+    }
+    case 'double':{
+      if(!F.test(s))return BAD(t,'not a number');
+      const d=parseFloat(s);
+      const o=Number.isInteger(d)&&Math.abs(d)<1e21?d.toFixed(1):String(d);
+      return {ok:true,type:t,ctype:'double',fn:'ftoa',out:o,lit:o};
+    }
+    case 'char':{
+      let c=/^'.'$/.test(s)?s[1]:Array.from(raw)[0];
+      if(c===undefined)return BAD(t,'needs one character');
+      const shown=c==='\n'?'\\n':c==='\t'?'\\t':c==="'"?"\\'":c;
+      return {ok:true,type:t,ctype:'char',fn:'copy 1 byte',out:c,lit:"'"+shown+"'"};
+    }
+    case 'bool':{
+      const v=s.toLowerCase();
+      if(/^(true|1|yes)$/.test(v))return {ok:true,type:t,ctype:'bool',fn:'btoa',out:'true',lit:'true'};
+      if(/^(false|0|no)$/.test(v))return {ok:true,type:t,ctype:'bool',fn:'btoa',out:'false',lit:'false'};
+      return BAD(t,'use true/false or 1/0');
+    }
+    case 'hex':{
+      if(!(I.test(s)||H.test(s)))return BAD(t,'use 255 or 0xff');
+      const b=BigInt.asUintN(32,BigInt(s));
+      const o='0x'+b.toString(16);
+      return {ok:true,type:t,ctype:'unsigned int',fn:'xtoa',out:o,lit:o};
+    }
+    case 'void *':{
+      if(!(I.test(s)||H.test(s)))return BAD(t,'use an address like 0x7ffc1234');
+      const b=BigInt.asUintN(64,BigInt(s));
+      return {ok:true,type:t,ctype:'void *',fn:'ptoa',out:b===0n?'(nil)':'0x'+b.toString(16),lit:b===0n?'NULL':'(void *)0x'+b.toString(16)};
+    }
+    default:
+      return {ok:true,type:'char *',ctype:'char *',fn:'strcpy',out:raw,lit:'"'+raw.replace(/\\/g,'\\\\').replace(/"/g,'\\"')+'"'};
+  }
+}
 
 function tokenize(src){
   const t=[];
@@ -1439,9 +1514,14 @@ function tick(){
     let fi=-1;V.forEach((x,i)=>{if(x.n===t.name)fi=i});const f=V[fi];
     if(f){
       hit=fi;
-      const kd=kind(f.v);
-      buf+=kd==='int'?String(parseInt(f.v,10)):kd==='float'?String(parseFloat(f.v)):f.v;
-      $('log').innerHTML='lookup <b>'+esc(t.name)+'</b> &rarr; <span class="ok">'+esc(show(f.v))+'</span> ('+(kind(f.v)==='int'?'itoa':kind(f.v)==='float'?'ftoa':'strcpy')+')';
+      const r=conv(f);
+      if(r.ok){
+        buf+=r.out;
+        $('log').innerHTML='lookup <b>'+esc(t.name)+'</b> &rarr; <span class="ok">'+esc(r.lit)+'</span> <span class="hint">('+esc(r.ctype)+', '+r.fn+(r.note?', '+r.note:'')+')</span>';
+      }else{
+        miss=true;buf+=t.raw;
+        $('log').innerHTML='lookup <b>'+esc(t.name)+'</b> &rarr; <span class="bad">value is not a valid '+esc(r.type)+' ('+esc(r.err)+'), left as-is</span>';
+      }
     }else{
       miss=true;
       buf+=t.raw;
@@ -1471,32 +1551,39 @@ function rebuildVars(){$('vars').dataset.built=''}
 function renderVars(){
   const box=$('vars');
   if(!box.dataset.built){
-    box.innerHTML=V.map((x,i)=>'<input class="nm" data-k="n" data-i="'+i+'" value="'+esc(x.n)+'" placeholder="name" spellcheck="false" autocomplete="off" aria-label="variable name">'
-      +'<input data-k="v" data-i="'+i+'" value="'+esc(x.v)+'" placeholder="value" spellcheck="false" autocomplete="off" aria-label="value">'
-      +'<span class="ty" id="ty'+i+'"></span>'
-      +'<button class="x" data-rm="'+i+'" title="Remove" aria-label="Remove variable">&times;</button>').join('');
+    box.innerHTML=V.map((x,i)=>'<div class="vrow"><input class="nm" data-k="n" data-i="'+i+'" value="'+esc(x.n)+'" placeholder="name" spellcheck="false" autocomplete="off" aria-label="variable name">'
+      +'<input class="val" data-k="v" data-i="'+i+'" value="'+esc(x.v)+'" placeholder="value" spellcheck="false" autocomplete="off" aria-label="value">'
+      +'<select id="ty'+i+'" data-i="'+i+'" aria-label="type">'+TYPES.map(t=>'<option value="'+t+'"'+(t===(x.t||'auto')?' selected':'')+'>'+t+'</option>').join('')+'</select>'
+      +'<button class="x" data-rm="'+i+'" title="Remove" aria-label="Remove variable">&times;</button>'
+      +'<div class="err" id="er'+i+'" hidden></div></div>').join('');
     box.dataset.built=1;
     box.querySelectorAll('input').forEach(inp=>inp.oninput=()=>{V[+inp.dataset.i][inp.dataset.k]=inp.value;reset()});
+    box.querySelectorAll('select').forEach(sel=>sel.onchange=()=>{V[+sel.dataset.i].t=sel.value;reset()});
     box.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{V.splice(+b.dataset.rm,1);rebuildVars();reset()});
   }
   const ins=box.querySelectorAll('input.nm');
   V.forEach((x,i)=>{
     const valid=okName(x.n);
     if(ins[i])ins[i].className='nm'+(hit===i?' hit':'')+(valid?'':' bad');
-    const ty=$('ty'+i);
-    if(ty){ty.textContent=valid?({int:'int',float:'double',str:'char *'}[kind(x.v)]):'bad name';ty.className='ty'+(valid?'':' bad')}
+    const sel=$('ty'+i),er=$('er'+i);
+    if(!sel)return;
+    const r=conv(x),bad=!valid||!r.ok;
+    sel.options[0].textContent='auto ('+(r.ok?r.ctype:detect(x.v.trim()))+')';
+    sel.className=bad?'bad':'';
+    const msg=!valid?'bad variable name':(!r.ok?'value is not a valid '+r.type+': '+r.err:'');
+    er.hidden=!msg;er.textContent=msg;
   });
 }
 
 function renderSnip(){
-  const lines=V.map(x=>'<span class="k">let</span>('+x.n+', '+esc(show(x.v))+');').join('\n');
+  const lines=V.map(x=>{const r=conv(x);return '<span class="k">let</span>('+esc(x.n)+', '+esc(r.ok?r.lit:x.v)+');'}).join('\n');
   $('snip').innerHTML=lines+'\n\n<span class="k">rprintf</span>("'+esc($('fmt').value)+'");';
 }
 
 $('add').onclick=()=>{
-  if(V.length>=8)return;
+  if(V.length>=10)return;
   let k=1;while(V.some(x=>x.n==='v'+k))k++;
-  V.push({n:'v'+k,v:'0'});rebuildVars();reset();
+  V.push({n:'v'+k,v:'0',t:'auto'});rebuildVars();reset();
   const ins=$('vars').querySelectorAll('input.nm');const last=ins[ins.length-1];
   if(last){last.focus();last.select()}
 };
@@ -1511,6 +1598,478 @@ $('play').onclick=()=>{
   timer=setInterval(()=>{if(!tick())stop()},260);
 };
 reset();
+</script>
+</template>
+
+<template id="imgSrc">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#dedacd;--card:#d2cdbe;--border:rgba(30,28,18,.18);--text:#1f1e18;--muted:#5e5946;--accent:#8a7250;--on:#1f1e18;--onfg:#dedacd;--bad:#a63d2f;--good:#3f6b45}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}}
+:root[data-theme="dark"]{--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
+main{max-width:860px;margin:0 auto}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:clamp(32px,7vw,48px);letter-spacing:-.01em;padding-right:44px}
+.sub{color:var(--muted);margin:6px 0 24px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:13px}
+button,label.btn{font:inherit;font-weight:400;font-size:14px;color:var(--text);background:transparent;border:1px solid var(--border);border-radius:999px;padding:7px 14px;cursor:pointer;transition:border-color .2s,background .2s}
+button:hover,label.btn:hover{border-color:var(--accent)}
+button.sel{background:var(--on);color:var(--onfg);border-color:var(--on)}
+input[type=file]{display:none}
+input[type=range]{flex:1;min-width:140px;accent-color:var(--accent)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.pair{grid-template-columns:1fr}}
+.pane .lbl{margin-bottom:6px}
+canvas{display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:8px;background:repeating-conic-gradient(#8884 0 25%,transparent 0 50%) 0 0/12px 12px;cursor:crosshair;image-rendering:auto}
+.info{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);margin-top:10px;min-height:18px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.sw{display:inline-block;width:12px;height:12px;border:1px solid var(--border);border-radius:3px;vertical-align:-2px;margin-right:4px}
+.kern{display:inline-grid;gap:3px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.kern span{min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--border);border-radius:5px}
+.kern span.c{border-color:var(--accent)}
+.kwrap{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.hint{font-size:12px;color:var(--muted)}
+.snip{font-family:ui-monospace,Menlo,monospace;font-size:13px;white-space:pre;overflow-x:auto}
+#hist{height:64px;cursor:default;background:var(--bg)}
+.ok{color:var(--good)}
+</style>
+<main>
+<h1>Image processing</h1>
+<p class="sub">Real pixel work, running in your browser: pick a filter and it runs a loop over the raw RGB bytes of the image, the same way the C toolkit walks a BMP. Load your own picture or use the generated sample, hover to inspect pixels, and save the result as a real 24-bit <span class="mono">.bmp</span>.</p>
+
+<div class="card">
+<div class="lbl">Image</div>
+<div class="row">
+<label class="btn" for="file">Load image</label><input type="file" id="file" accept="image/*">
+<button id="sample">Sample</button>
+<button id="dl">Download .bmp</button>
+<span class="hint" id="drop">or drop a file anywhere</span>
+</div>
+</div>
+
+<div class="card">
+<div class="lbl">Filter</div>
+<div class="row" id="filters"></div>
+<div class="row" id="prow" style="margin-top:14px" hidden><span class="mono" id="plbl"></span><input type="range" id="p"><span class="mono" id="pval"></span></div>
+<div class="kwrap" id="kwrap"></div>
+</div>
+
+<div class="card">
+<div class="pair">
+<div class="pane"><div class="lbl">Input</div><canvas id="cin"></canvas></div>
+<div class="pane"><div class="lbl">Output</div><canvas id="cout"></canvas></div>
+</div>
+<div class="info" id="px">Hover an image to read pixels.</div>
+<div class="info" id="stat"></div>
+</div>
+
+<div class="card"><div class="lbl">Luminance histogram (outline: input, filled: output)</div><canvas id="hist" width="256" height="64"></canvas></div>
+
+<div class="card"><div class="lbl">C</div><div id="snip" class="snip"></div></div>
+</main>
+<script>
+try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+const $=id=>document.getElementById(id);
+const cl=v=>v<0?0:v>255?255:v+.5|0;
+const ci=$('cin'),co=$('cout'),xi=ci.getContext('2d',{willReadFrequently:true}),xo=co.getContext('2d',{willReadFrequently:true});
+let src=null,out=null,cur='gray';
+const lum=(d,i)=>.299*d[i]+.587*d[i+1]+.114*d[i+2];
+
+/* ---------- kernels & helpers ---------- */
+const SHARP=[0,-1,0,-1,5,-1,0,-1,0],EMB=[-2,-1,0,-1,1,1,0,1,2];
+const GX=[-1,0,1,-2,0,2,-1,0,1],GY=[-1,-2,-1,0,0,0,1,2,1];
+function conv(s,k,n,div,bias){
+  const w=s.width,h=s.height,a=s.data,o=new ImageData(w,h),b=o.data,r=n>>1;
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+    let R=0,G=0,B=0;
+    for(let j=0;j<n;j++){const yy=Math.min(h-1,Math.max(0,y+j-r));
+      for(let i=0;i<n;i++){const xx=Math.min(w-1,Math.max(0,x+i-r)),q=(yy*w+xx)*4,c=k[j*n+i];R+=a[q]*c;G+=a[q+1]*c;B+=a[q+2]*c}}
+    const p=(y*w+x)*4;b[p]=cl(R/div+bias);b[p+1]=cl(G/div+bias);b[p+2]=cl(B/div+bias);b[p+3]=a[p+3];
+  }
+  return o;
+}
+function sep(s,k){ /* separable 1-D kernel, horizontal then vertical */
+  const w=s.width,h=s.height,n=k.length,r=n>>1,sum=k.reduce((a,b)=>a+b,0);
+  let a=s.data,t=new ImageData(w,h),o=new ImageData(w,h);
+  for(let pass=0;pass<2;pass++){
+    const from=pass?t.data:a,to=pass?o.data:t.data;
+    for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+      let R=0,G=0,B=0;
+      for(let i=0;i<n;i++){
+        const xx=pass?x:Math.min(w-1,Math.max(0,x+i-r)),yy=pass?Math.min(h-1,Math.max(0,y+i-r)):y,q=(yy*w+xx)*4;
+        R+=from[q]*k[i];G+=from[q+1]*k[i];B+=from[q+2]*k[i];
+      }
+      const p=(y*w+x)*4;to[p]=cl(R/sum);to[p+1]=cl(G/sum);to[p+2]=cl(B/sum);to[p+3]=a[p+3];
+    }
+  }
+  return o;
+}
+function map(s,f){const o=new ImageData(s.width,s.height),a=s.data,b=o.data;for(let i=0;i<a.length;i+=4){const r=f(a[i],a[i+1],a[i+2],i);b[i]=r[0];b[i+1]=r[1];b[i+2]=r[2];b[i+3]=a[i+3]}return o}
+
+/* ---------- filters ---------- */
+const F=[
+{id:'gray',name:'Grayscale',c:'for (i = 0; i < w * h; i++) {\n    uint8_t *p = px + i * 3;          /* B, G, R */\n    uint8_t y = 0.299*p[2] + 0.587*p[1] + 0.114*p[0];\n    p[0] = p[1] = p[2] = y;\n}',
+ run:s=>map(s,(r,g,b)=>{const y=cl(.299*r+.587*g+.114*b);return[y,y,y]})},
+{id:'sepia',name:'Sepia',c:'r = 0.393*R + 0.769*G + 0.189*B;\ng = 0.349*R + 0.686*G + 0.168*B;\nb = 0.272*R + 0.534*G + 0.131*B;\np[2] = clamp(r); p[1] = clamp(g); p[0] = clamp(b);',
+ run:s=>map(s,(r,g,b)=>[cl(.393*r+.769*g+.189*b),cl(.349*r+.686*g+.168*b),cl(.272*r+.534*g+.131*b)])},
+{id:'invert',name:'Invert',c:'for (i = 0; i < w * h * 3; i++)\n    px[i] = 255 - px[i];',
+ run:s=>map(s,(r,g,b)=>[255-r,255-g,255-b])},
+{id:'bright',name:'Brightness',p:{l:'delta',min:-100,max:100,v:40},c:p=>'for (i = 0; i < w * h * 3; i++)\n    px[i] = clamp(px[i] + '+p+');',
+ run:(s,p)=>map(s,(r,g,b)=>[cl(r+p),cl(g+p),cl(b+p)])},
+{id:'contrast',name:'Contrast',p:{l:'amount',min:-100,max:100,v:50},c:p=>{const c=p*2.55,f=(259*(c+255))/(255*(259-c));return 'float f = '+f.toFixed(3)+';   /* 259(c+255) / 255(259-c), c = '+c.toFixed(0)+' */\nfor (i = 0; i < w * h * 3; i++)\n    px[i] = clamp(f * (px[i] - 128) + 128);'},
+ run:(s,p)=>{const c=p*2.55,f=(259*(c+255))/(255*(259-c));return map(s,(r,g,b)=>[cl(f*(r-128)+128),cl(f*(g-128)+128),cl(f*(b-128)+128)])}},
+{id:'thresh',name:'Threshold',p:{l:'level',min:0,max:255,v:128},c:p=>'uint8_t y = 0.299*R + 0.587*G + 0.114*B;\np[0] = p[1] = p[2] = (y > '+p+') ? 255 : 0;',
+ run:(s,p)=>map(s,(r,g,b)=>{const y=.299*r+.587*g+.114*b>p?255:0;return[y,y,y]})},
+{id:'blur',name:'Box blur',p:{l:'radius',min:1,max:10,v:3},c:p=>'/* '+(2*p+1)+'-tap box, run along rows then columns */\nfor (x = 0; x < w; x++) {\n    sum = 0;\n    for (k = -'+p+'; k <= '+p+'; k++) sum += in[clampx(x + k)];\n    out[x] = sum / '+(2*p+1)+';\n}',
+ run:(s,p)=>sep(s,new Array(2*p+1).fill(1)),
+ k:p=>({txt:(2*p+1)+' x '+(2*p+1)+' box, every weight = 1/'+(2*p+1)*(2*p+1)})},
+{id:'gauss',name:'Gaussian blur',p:{l:'passes',min:1,max:6,v:1},c:p=>'static const int k[5] = {1, 4, 6, 4, 1};   /* sum = 16 */\nfor (n = 0; n < '+p+'; n++)\n    convolve_h_then_v(img, k, 5, 16);',
+ run:(s,p)=>{let o=s;for(let i=0;i<p;i++)o=sep(o,[1,4,6,4,1]);return o},
+ k:()=>({n:5,m:[1,4,6,4,1].flatMap(a=>[1,4,6,4,1].map(b=>a*b)),div:256})},
+{id:'sharp',name:'Sharpen',c:'static const int k[9] = { 0,-1, 0,\n                         -1, 5,-1,\n                          0,-1, 0 };\nconvolve(img, k, 3, 1);',
+ run:s=>conv(s,SHARP,3,1,0),k:()=>({n:3,m:SHARP,div:1})},
+{id:'emboss',name:'Emboss',c:'static const int k[9] = {-2,-1, 0,\n                         -1, 1, 1,\n                          0, 1, 2 };\nconvolve(img, k, 3, 1, /*bias*/ 128);',
+ run:s=>conv(s,EMB,3,1,128),k:()=>({n:3,m:EMB,div:1})},
+{id:'sobel',name:'Edge (Sobel)',c:'gx = sum(gray[3x3] * Gx);\ngy = sum(gray[3x3] * Gy);\nmag = sqrt(gx*gx + gy*gy);\np[0] = p[1] = p[2] = clamp(mag);',
+ run:s=>{
+   const w=s.width,h=s.height,a=s.data,g=new Float32Array(w*h),o=new ImageData(w,h),b=o.data;
+   for(let i=0;i<w*h;i++)g[i]=lum(a,i*4);
+   for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+     let sx=0,sy=0;
+     for(let j=0;j<3;j++)for(let i=0;i<3;i++){const v=g[Math.min(h-1,Math.max(0,y+j-1))*w+Math.min(w-1,Math.max(0,x+i-1))];sx+=v*GX[j*3+i];sy+=v*GY[j*3+i]}
+     const m=cl(Math.hypot(sx,sy)),p=(y*w+x)*4;b[p]=b[p+1]=b[p+2]=m;b[p+3]=255;
+   }
+   return o},
+ k:()=>({n:3,m:GX,div:1,label:'Gx'}),k2:()=>({n:3,m:GY,div:1,label:'Gy'})},
+{id:'eq',name:'Equalize',c:'hist[lum(p)]++;  /* pass 1 */\ncdf[i] = cdf[i-1] + hist[i];\nnew_y = 255 * (cdf[y] - cdf_min) / (w*h - cdf_min);\nscale R, G, B by new_y / y;   /* pass 2 */',
+ run:s=>{
+   const a=s.data,hs=new Array(256).fill(0),n=a.length/4;
+   for(let i=0;i<a.length;i+=4)hs[Math.round(lum(a,i))]++;
+   const cdf=[];let c=0;hs.forEach((v,i)=>{c+=v;cdf[i]=c});
+   const mn=cdf.find(v=>v>0),lut=cdf.map(v=>255*(v-mn)/Math.max(1,n-mn));
+   return map(s,(r,g,b,i)=>{const y=Math.max(1,lum(a,i)),f=lut[Math.round(y)]/y;return[cl(r*f),cl(g*f),cl(b*f)]})}},
+{id:'pix',name:'Pixelate',p:{l:'block',min:2,max:40,v:10},c:p=>'for (by = 0; by < h; by += '+p+')\n  for (bx = 0; bx < w; bx += '+p+') {\n    avg = mean(block '+p+'x'+p+');\n    fill(block, avg);\n  }',
+ run:(s,p)=>{
+   const w=s.width,h=s.height,a=s.data,o=new ImageData(w,h),b=o.data;
+   for(let by=0;by<h;by+=p)for(let bx=0;bx<w;bx+=p){
+     let R=0,G=0,B=0,n=0;const ye=Math.min(h,by+p),xe=Math.min(w,bx+p);
+     for(let y=by;y<ye;y++)for(let x=bx;x<xe;x++){const q=(y*w+x)*4;R+=a[q];G+=a[q+1];B+=a[q+2];n++}
+     R=cl(R/n);G=cl(G/n);B=cl(B/n);
+     for(let y=by;y<ye;y++)for(let x=bx;x<xe;x++){const q=(y*w+x)*4;b[q]=R;b[q+1]=G;b[q+2]=B;b[q+3]=255}
+   }
+   return o}},
+{id:'mirror',name:'Mirror',c:'for (y = 0; y < h; y++)\n    for (x = 0; x < w / 2; x++)\n        swap_pixel(row[y], x, w - 1 - x);',
+ run:s=>{const w=s.width,h=s.height,a=s.data,o=new ImageData(w,h),b=o.data;
+   for(let y=0;y<h;y++)for(let x=0;x<w;x++){const p=(y*w+x)*4,q=(y*w+(w-1-x))*4;b[p]=a[q];b[p+1]=a[q+1];b[p+2]=a[q+2];b[p+3]=a[q+3]}return o}}
+];
+const P={};F.forEach(f=>{if(f.p)P[f.id]=f.p.v});
+
+/* ---------- UI ---------- */
+function kernHtml(k){
+  const c=k.n>>1;
+  return '<div>'+(k.label?'<div class="hint" style="margin-bottom:4px">'+k.label+'</div>':'')+'<div class="kern" style="grid-template-columns:repeat('+k.n+',auto)">'
+    +k.m.map((v,i)=>'<span'+(i===k.n*c+c?' class="c"':'')+'>'+v+'</span>').join('')+'</div></div>'
+    +(k.div>1?'<div class="mono">&times; 1/'+k.div+'</div>':'');
+}
+function drawUI(){
+  const f=F.find(x=>x.id===cur);
+  $('filters').innerHTML=F.map(x=>'<button data-f="'+x.id+'"'+(x.id===cur?' class="sel"':'')+'>'+x.name+'</button>').join('');
+  $('filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.dataset.f;drawUI();apply()});
+  $('prow').hidden=!f.p;
+  if(f.p){const r=$('p');r.min=f.p.min;r.max=f.p.max;r.value=P[f.id];$('plbl').textContent=f.p.l;$('pval').textContent=P[f.id]}
+  let kh='';
+  if(f.k){const k=f.k(P[f.id]);kh=k.m?kernHtml(k):'<span class="mono">'+k.txt+'</span>';if(f.k2)kh+=kernHtml(f.k2())}
+  $('kwrap').innerHTML=kh;$('kwrap').hidden=!kh;
+}
+$('p').oninput=e=>{P[cur]=+e.target.value;$('pval').textContent=P[cur];apply()};
+
+function apply(){
+  if(!src)return;
+  const f=F.find(x=>x.id===cur),p=P[cur],t0=performance.now();
+  out=f.run(src,p);
+  const ms=performance.now()-t0;
+  xo.putImageData(out,0,0);
+  $('stat').innerHTML='<span>'+src.width+' &times; '+src.height+'</span><span>'+(src.width*src.height).toLocaleString()+' px</span><span class="ok">'+f.name+': '+ms.toFixed(1)+' ms</span>';
+  $('snip').textContent=typeof f.c==='function'?f.c(p):f.c;
+  hist();
+}
+function hist(){
+  const c=$('hist'),x=c.getContext('2d'),cs=getComputedStyle(document.documentElement);
+  const H=d=>{const h=new Array(256).fill(0);for(let i=0;i<d.length;i+=4)h[Math.round(lum(d,i))]++;return h};
+  const a=H(src.data),b=H(out.data),m=Math.max(...a,...b,1);
+  x.clearRect(0,0,256,64);
+  x.fillStyle=cs.getPropertyValue('--accent').trim()||'#8a7250';x.globalAlpha=.8;
+  b.forEach((v,i)=>{const h=Math.sqrt(v/m)*62;x.fillRect(i,64-h,1,h)});
+  x.globalAlpha=1;x.strokeStyle=cs.getPropertyValue('--text').trim()||'#000';x.globalAlpha=.6;x.beginPath();
+  a.forEach((v,i)=>{const y=64-Math.sqrt(v/m)*62;i?x.lineTo(i+.5,y):x.moveTo(i+.5,y)});x.stroke();x.globalAlpha=1;
+}
+
+/* ---------- loading ---------- */
+function setImage(source,w,h){
+  const s=Math.min(1,560/Math.max(w,h)),W=Math.max(1,Math.round(w*s)),H=Math.max(1,Math.round(h*s));
+  ci.width=co.width=W;ci.height=co.height=H;
+  xi.clearRect(0,0,W,H);xi.drawImage(source,0,0,W,H);
+  src=xi.getImageData(0,0,W,H);apply();
+}
+function sample(){
+  const c=document.createElement('canvas');c.width=480;c.height=320;const x=c.getContext('2d');
+  let g=x.createLinearGradient(0,0,0,320);g.addColorStop(0,'#2a4d8f');g.addColorStop(.6,'#f4b16a');g.addColorStop(1,'#f9dca0');x.fillStyle=g;x.fillRect(0,0,480,320);
+  x.fillStyle='#fff3c2';x.beginPath();x.arc(370,90,36,0,7);x.fill();
+  x.fillStyle='#3d5a3a';x.beginPath();x.moveTo(0,320);x.lineTo(0,210);x.quadraticCurveTo(120,140,250,220);x.quadraticCurveTo(360,270,480,190);x.lineTo(480,320);x.fill();
+  x.fillStyle='#24382a';x.beginPath();x.moveTo(0,320);x.lineTo(0,270);x.quadraticCurveTo(200,220,480,280);x.lineTo(480,320);x.fill();
+  x.fillStyle='#c8553d';x.fillRect(90,200,90,64);x.fillStyle='#7a2e22';x.beginPath();x.moveTo(80,200);x.lineTo(135,158);x.lineTo(190,200);x.fill();
+  x.fillStyle='#f2e6c9';x.fillRect(116,226,20,38);x.fillRect(150,214,16,16);
+  for(let j=0;j<4;j++)for(let i=0;i<6;i++){x.fillStyle=(i+j)%2?'#111':'#eee';x.fillRect(260+i*14,20+j*14,14,14)}
+  x.font='700 30px Georgia,serif';x.fillStyle='#fff';x.fillText('BMP',24,60);
+  const d=x.getImageData(0,0,480,320),a=d.data;let seed=7;
+  for(let i=0;i<a.length;i+=4){seed=(seed*1664525+1013904223)>>>0;const n=((seed>>>24)-128)*.16;a[i]=cl(a[i]+n);a[i+1]=cl(a[i+1]+n);a[i+2]=cl(a[i+2]+n)}
+  x.putImageData(d,0,0);setImage(c,480,320);
+}
+function loadFile(f){
+  if(!f||!/^image\//.test(f.type))return;
+  const u=URL.createObjectURL(f),im=new Image();
+  im.onload=()=>{setImage(im,im.naturalWidth,im.naturalHeight);URL.revokeObjectURL(u)};
+  im.onerror=()=>{$('stat').textContent='Could not decode that file.'};
+  im.src=u;
+}
+$('file').onchange=e=>loadFile(e.target.files[0]);
+$('sample').onclick=sample;
+addEventListener('dragover',e=>e.preventDefault());
+addEventListener('drop',e=>{e.preventDefault();loadFile(e.dataTransfer.files[0])});
+
+/* ---------- pixel inspector ---------- */
+function inspect(e){
+  if(!src)return;
+  const c=e.currentTarget,r=c.getBoundingClientRect();
+  const x=Math.min(src.width-1,Math.max(0,Math.floor((e.clientX-r.left)/r.width*src.width))),y=Math.min(src.height-1,Math.max(0,Math.floor((e.clientY-r.top)/r.height*src.height)));
+  const q=(y*src.width+x)*4,a=src.data,b=out.data;
+  const t=(d,l)=>'<span><i class="sw" style="background:rgb('+d[q]+','+d[q+1]+','+d[q+2]+')"></i>'+l+' ('+d[q]+', '+d[q+1]+', '+d[q+2]+')</span>';
+  $('px').innerHTML='<span>x='+x+' y='+y+'</span>'+t(a,'in')+t(b,'out');
+}
+ci.onpointermove=co.onpointermove=inspect;
+
+/* ---------- BMP export (24-bit, bottom-up, rows padded to 4 bytes) ---------- */
+$('dl').onclick=()=>{
+  if(!out)return;
+  const w=out.width,h=out.height,rs=(w*3+3)&~3,sz=54+rs*h,buf=new ArrayBuffer(sz),v=new DataView(buf),u=new Uint8Array(buf),d=out.data;
+  u[0]=66;u[1]=77;v.setUint32(2,sz,true);v.setUint32(10,54,true);v.setUint32(14,40,true);v.setInt32(18,w,true);v.setInt32(22,h,true);
+  v.setUint16(26,1,true);v.setUint16(28,24,true);v.setUint32(34,rs*h,true);v.setInt32(38,2835,true);v.setInt32(42,2835,true);
+  for(let y=0;y<h;y++){const o=54+(h-1-y)*rs;for(let x=0;x<w;x++){const q=(y*w+x)*4,p=o+x*3;u[p]=d[q+2];u[p+1]=d[q+1];u[p+2]=d[q]}}
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([buf],{type:'image/bmp'}));a.download='output-'+cur+'.bmp';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  $('stat').innerHTML+='<span>saved '+sz.toLocaleString()+' bytes (54 header + '+w+'&times;'+h+' rows of '+rs+' B)</span>';
+};
+
+drawUI();sample();
+</script>
+</template>
+
+<template id="crySrc">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#dedacd;--card:#d2cdbe;--border:rgba(30,28,18,.18);--text:#1f1e18;--muted:#5e5946;--accent:#8a7250;--on:#1f1e18;--onfg:#dedacd;--bad:#a63d2f;--good:#3f6b45}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}}
+:root[data-theme="dark"]{--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
+main{max-width:900px;margin:0 auto}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:clamp(32px,7vw,48px);letter-spacing:-.01em;padding-right:44px}
+.sub{color:var(--muted);margin:6px 0 24px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:13px}
+button{font:inherit;font-weight:400;font-size:14px;color:var(--text);background:transparent;border:1px solid var(--border);border-radius:999px;padding:7px 14px;cursor:pointer;transition:border-color .2s,background .2s}
+button:hover{border-color:var(--accent)}
+button.sel{background:var(--on);color:var(--onfg);border-color:var(--on)}
+input{font:inherit;font-family:ui-monospace,Menlo,monospace;font-size:16px;letter-spacing:.12em;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:7px 16px;width:160px}
+input:focus{outline:none;border-color:var(--accent)}
+.hint{font-size:12px;color:var(--muted)}
+.info{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);margin-top:12px}
+.ok{color:var(--good)}.bad{color:var(--bad)}
+.scroll{overflow-x:auto;padding-bottom:6px}
+.grid{display:grid;grid-template-columns:24px repeat(16,54px);gap:3px;width:max-content;font-family:ui-monospace,Menlo,monospace}
+.grid .ax{font-size:10px;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.cell{height:30px;font-size:10px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:5px;cursor:pointer;user-select:none;transition:border-color .12s}
+.cell:hover{border-color:var(--accent)}
+.cell.w{background:transparent;color:var(--muted);font-size:12px;opacity:.7}
+.cell.s{outline:2px solid var(--accent);outline-offset:1px}
+.pre{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;white-space:pre;overflow-x:auto;line-height:1.7}
+.pre b{color:var(--accent);font-weight:700}
+.pre .hd{font-family:Inter,system-ui,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.strip{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0 12px}
+.strip span{font-family:ui-monospace,Menlo,monospace;font-size:11px;width:28px;height:26px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:5px;color:var(--muted)}
+.strip span.p{background:var(--on);color:var(--onfg);border-color:var(--on)}
+.cand{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.8;white-space:pre;overflow-x:auto}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+</style>
+<main>
+<h1>Cryptographic memory maze</h1>
+<p class="sub">Enter an 8-digit ID. It decides where the walls go and keys the cipher that hides every open cell's position inside a 32-bit word: <span class="mono">rotl(((x&lt;&lt;16 | y) XOR ID), ID % 32)</span>. Everything below is computed live with real 32-bit arithmetic.</p>
+
+<div class="card">
+<div class="lbl">ID</div>
+<div class="row">
+<input id="id" inputmode="numeric" maxlength="8" spellcheck="false" autocomplete="off" aria-label="8-digit ID">
+<button id="rnd">Random</button>
+<span style="width:8px"></span>
+<button id="mEnc" class="sel">Encrypted</button>
+<button id="mDec">Decrypted</button>
+</div>
+<div class="info" id="meta"></div>
+</div>
+
+<div class="card">
+<div class="lbl">Grid, uint32_t grid[16][16] &middot; click a cell</div>
+<div class="scroll"><div class="grid" id="grid"></div></div>
+<div class="legend hint"><span>X = wall: <span class="mono">ID % prime[x] == 0</span> or <span class="mono">ID % prime[y] == 0</span></span><span>otherwise the cell stores its 32-bit cipher</span></div>
+</div>
+
+<div class="card"><div class="lbl" id="stitle">Cell</div><div class="pre" id="steps"></div></div>
+
+<div class="card">
+<div class="lbl">Reverse engineering the ID</div>
+<p class="hint" id="rdesc" style="margin-bottom:10px"></p>
+<div class="strip" id="strip"></div>
+<div class="cand" id="cand"></div>
+</div>
+
+<div class="card"><div class="lbl">C</div><div class="pre" id="csn">uint32_t rotl(uint32_t v, unsigned r) { r &amp;= 31; return (v &lt;&lt; r) | (v &gt;&gt; ((32 - r) &amp; 31)); }
+uint32_t rotr(uint32_t v, unsigned r) { return rotl(v, (32 - r) &amp; 31); }
+
+uint32_t encrypt(uint32_t x, uint32_t y, uint32_t id) {
+    return rotl(((x &lt;&lt; 16) | y) ^ id, id % 32);
+}
+void decrypt(uint32_t c, uint32_t id, uint32_t *x, uint32_t *y) {
+    uint32_t t = rotr(c, id % 32) ^ id;
+    *x = (t &gt;&gt; 16) &amp; 0xFFFF;
+    *y = t &amp; 0xFFFF;
+}</div></div>
+
+<div class="card"><div class="lbl">MIPS32 (spim, no rotate instruction, so rotate = two shifts and an or)</div><div class="pre">                        # $a0 = x, $a1 = y, $s0 = ID
+sll  $t0, $a0, 16
+or   $t0, $t0, $a1      # x&lt;&lt;16 | y
+xor  $t0, $t0, $s0      # ^ ID
+andi $t1, $s0, 31       # r = ID % 32
+sllv $t2, $t0, $t1      # v &lt;&lt; r
+li   $t3, 32
+subu $t3, $t3, $t1
+srlv $t3, $t0, $t3      # v &gt;&gt; (32 - r)   (shift amount is taken mod 32)
+or   $v0, $t2, $t3      # $v0 = cipher</div></div>
+</main>
+<script>
+try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+const $=id=>document.getElementById(id);
+const PR=[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53];
+const hex=v=>(v>>>0).toString(16).toUpperCase().padStart(8,'0');
+const rotl=(v,r)=>{r&=31;return((v<<r)|(v>>>((32-r)&31)))>>>0};
+const rotr=(v,r)=>rotl(v,(32-r)&31);
+let ID=12345678,mode='enc',sel={x:3,y:7};
+const wall=(x,y)=>ID%PR[y]===0||ID%PR[x]===0;
+const enc=(x,y,id=ID)=>rotl((((x<<16)|y)^id)>>>0,id%32);
+const dec=(c,id=ID)=>{const t=(rotr(c,id%32)^id)>>>0;return{t,x:(t>>>16)&0xFFFF,y:t&0xFFFF}};
+function bstr(v,top,low){
+  let s='';
+  for(let b=31;b>=0;b--){const bit=(v>>>b)&1,w=(top&&b>=32-top)||(low&&b<low);s+=w?'<b>'+bit+'</b>':bit;if(b%8===0&&b)s+=' '}
+  return s;
+}
+const L=(a,b,c)=>a.padEnd(14).replace(/</g,'&lt;')+b+(c?'   '+c:'')+'\n';
+const openCells=()=>{const a=[];for(let y=0;y<16;y++)for(let x=0;x<16;x++)if(!wall(x,y))a.push([x,y]);return a};
+
+function renderGrid(){
+  let h='<span class="ax"></span>';
+  for(let x=0;x<16;x++)h+='<span class="ax">'+x+'</span>';
+  for(let y=0;y<16;y++){
+    h+='<span class="ax">'+y+'</span>';
+    for(let x=0;x<16;x++){
+      const s=sel.x===x&&sel.y===y?' s':'';
+      if(wall(x,y))h+='<div class="cell w'+s+'" data-x="'+x+'" data-y="'+y+'">X</div>';
+      else{
+        const c=enc(x,y),d=dec(c),txt=mode==='enc'?hex(c):d.x+','+d.y;
+        h+='<div class="cell'+s+'" data-x="'+x+'" data-y="'+y+'" style="background:hsl('+((c>>>20)%360)+' 32% 50% / .2)" title="('+x+', '+y+') = 0x'+hex(c)+'">'+txt+'</div>';
+      }
+    }
+  }
+  $('grid').innerHTML=h;
+}
+function renderMeta(){
+  const div=PR.map((p,i)=>ID%p===0?p+' (index '+i+')':null).filter(Boolean);
+  const cells=openCells();let okc=0;
+  cells.forEach(([x,y])=>{const d=dec(enc(x,y));if(d.x===x&&d.y===y)okc++});
+  $('meta').innerHTML='ID % 32 = <b>'+(ID%32)+'</b> (rotation r) &middot; ID is divisible by: '+(div.length?div.join(', ')+' &rarr; those rows and columns are walls':'none of the first 16 primes, so no walls')
+    +'<br>'+cells.length+' open cells, '+(256-cells.length)+' walls &middot; <span class="'+(okc===cells.length?'ok':'bad')+'">'+okc+'/'+cells.length+' cells decrypt back to their (x, y)</span>';
+}
+function renderSteps(){
+  const {x,y}=sel,box=$('steps');
+  $('stitle').textContent='Cell ('+x+', '+y+')';
+  if(wall(x,y)){
+    const why=[];if(ID%PR[y]===0)why.push('ID % prime[y='+y+'] = ID % '+PR[y]+' = 0');if(ID%PR[x]===0)why.push('ID % prime[x='+x+'] = ID % '+PR[x]+' = 0');
+    box.textContent='wall, stored as "X", nothing is encrypted.\n'+why.join('\n');return;
+  }
+  const r=ID%32,p=((x<<16)|y)>>>0,xr=(p^ID)>>>0,c=rotl(xr,r),t1=rotr(c,r),d=dec(c);
+  let h='<span class="hd">Encrypt</span>\n';
+  h+=L('x<<16 | y',bstr(p),'x='+x+', y='+y);
+  h+=L('ID',bstr(ID>>>0),String(ID));
+  h+=L('XOR',bstr(xr),r?'top '+r+' bits will wrap around':'');
+  h+=L('rotl by '+r,bstr(c,0,r),'= 0x'+hex(c));
+  h+='\n<span class="hd">Decrypt</span>\n';
+  h+=L('cipher',bstr(c,0,r));
+  h+=L('rotr by '+r,bstr(t1));
+  h+=L('XOR ID',bstr(d.t));
+  h+='x = (t &gt;&gt; 16) &amp; 0xFFFF = <b>'+d.x+'</b>\ny = t &amp; 0xFFFF         = <b>'+d.y+'</b>   <span class="'+(d.x===x&&d.y===y?'ok':'bad')+'">'+(d.x===x&&d.y===y?'matches':'MISMATCH')+'</span>';
+  box.innerHTML=h;
+}
+function renderRecover(){
+  const cells=openCells(),strip=$('strip'),cand=$('cand');
+  if(!cells.length){strip.innerHTML='';cand.textContent='Every cell is a wall, so there is nothing to attack.';$('rdesc').textContent='';return}
+  const A=wall(sel.x,sel.y)?cells[0]:[sel.x,sel.y];
+  const B=cells.slice().reverse().find(c=>c[0]!==A[0]||c[1]!==A[1]);
+  const cA=enc(A[0],A[1]),pA=((A[0]<<16)|A[1])>>>0;
+  $('rdesc').innerHTML='Attacker knows cell ('+A+') holds <span class="mono">0x'+hex(cA)+'</span>. The unknown rotation R = ID % 32 has only 32 values, so try them all: '
+    +'<span class="mono">ID = rotr(cell, R) XOR (x&lt;&lt;16 | y)</span>, and keep R only if the result satisfies <span class="mono">ID % 32 == R</span>.';
+  let sh='';const pass=[];
+  for(let R=0;R<32;R++){
+    const id=(rotr(cA,R)^pA)>>>0,ok=id%32===R;
+    if(ok)pass.push({R,id});
+    sh+='<span class="'+(ok?'p':'')+'" title="R='+R+' &rarr; '+id+'">'+R+'</span>';
+  }
+  strip.innerHTML=sh;
+  let h='<b>'+pass.length+'</b> of 32 rotations pass the self-consistency check.\n';
+  let left=pass;
+  if(B){
+    const cB=enc(B[0],B[1]);
+    h+='Filter with a second cell ('+B+') = 0x'+hex(cB)+': a real ID must reproduce it too.\n\n';
+    left=[];
+    pass.forEach(k=>{
+      const ok=enc(B[0],B[1],k.id)===cB;if(ok)left.push(k);
+      h+='R='+String(k.R).padStart(2)+'  ID='+String(k.id).padStart(10)+'  '+(ok?'<span class="ok">reproduces cell ('+B+')</span>':'<span class="bad">rejected</span>')+'\n';
+    });
+  }
+  h+='\n'+(left.length===1?'Recovered ID = <b>'+left[0].id+'</b> <span class="'+(left[0].id===ID?'ok':'bad')+'">'+(left[0].id===ID?'(correct)':'(wrong?)')+'</span>':left.length+' candidates left, need more cells.');
+  cand.innerHTML=h;
+}
+function renderAll(){
+  if(wall(sel.x,sel.y)){const o=openCells();if(o.length)sel={x:o[0][0],y:o[0][1]}}
+  renderGrid();renderMeta();renderSteps();renderRecover();
+}
+function setID(v){ID=v;renderAll()}
+$('id').oninput=e=>{
+  const s=e.target.value.replace(/\D/g,'');if(s!==e.target.value)e.target.value=s;
+  if(s.length)setID(parseInt(s,10));
+};
+$('rnd').onclick=()=>{const v=10000000+Math.floor(Math.random()*90000000);$('id').value=v;setID(v)};
+$('mEnc').onclick=()=>{mode='enc';$('mEnc').className='sel';$('mDec').className='';renderGrid()};
+$('mDec').onclick=()=>{mode='dec';$('mDec').className='sel';$('mEnc').className='';renderGrid()};
+$('grid').onclick=e=>{
+  const c=e.target.closest('.cell');if(!c)return;
+  sel={x:+c.dataset.x,y:+c.dataset.y};renderGrid();renderSteps();renderRecover();
+};
+$('id').value=ID;renderAll();
 </script>
 </template>
 
@@ -3955,6 +4514,8 @@ input{flex:1;min-width:0;padding:0;border:0;outline:0;background:transparent;col
   framePopup({ btn: 'helBtn', dlg: 'helDialog', frame: 'helFrame', tpl: 'helSrc', close: 'helClose' });
   framePopup({ btn: 'ofBtn', dlg: 'ofDialog', frame: 'ofFrame', tpl: 'ofSrc', close: 'ofClose' });
   framePopup({ btn: 'rpBtn', dlg: 'rpDialog', frame: 'rpFrame', tpl: 'rpSrc', close: 'rpClose' });
+  framePopup({ btn: 'imgBtn', dlg: 'imgDialog', frame: 'imgFrame', tpl: 'imgSrc', close: 'imgClose' });
+  framePopup({ btn: 'cryBtn', dlg: 'cryDialog', frame: 'cryFrame', tpl: 'crySrc', close: 'cryClose' });
 })();
 </script>
 </body>
