@@ -319,6 +319,7 @@
   }
   .video-dialog::backdrop { background: rgba(0,0,0,.72); }
   .video-dialog video { display: block; width: 100%; max-height: 82vh; background: #000; }
+  .video-dialog iframe { display: block; width: 100%; height: min(86vh, 760px); border: 0; background: var(--bg); }
   .video-close {
     position: absolute; top: 10px; right: 10px; z-index: 1; width: 36px; height: 36px; border-radius: 50%;
     border: 1px solid var(--border-h); background: color-mix(in srgb, var(--bg) 85%, transparent);
@@ -802,7 +803,7 @@
       <h3>Prolog State-Space Search</h3>
       <p>Compares DFS, BFS, IDS and A* on a 6×6 grid with traps.</p>
       <div class="project-foot"><span class="project-tags">Prolog, A*</span>
-        <span class="project-links"><a class="link" href="https://moudzx.github.io/Prolog/" target="_blank" rel="noopener">Open</a><a class="link" href="https://github.com/moudzx/Prolog" target="_blank" rel="noopener">Code</a></span></div></div>
+        <span class="project-links"><button type="button" class="link demo-btn" id="prologBtn" aria-haspopup="dialog">Demo</button><a class="link" href="https://github.com/moudzx/Prolog" target="_blank" rel="noopener">Code</a></span></div></div>
     </article>
 
     <article class="project" data-category="web">
@@ -1139,6 +1140,147 @@
   <p class="video-err" id="videoErr" hidden>The video could not be loaded. <a class="link" id="videoFallback" href="#" target="_blank" rel="noopener">Open it directly</a></p>
 </dialog>
 
+<dialog class="video-dialog" id="prologDialog" aria-label="Prolog search animation">
+  <button type="button" class="video-close" id="prologClose" aria-label="Close animation">&times;</button>
+  <iframe id="prologFrame" title="Prolog search algorithms, animated"></iframe>
+</dialog>
+
+<template id="prologAnimSrc">
+<style>
+:root{--bg:#fafaf7;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--line:#c9c9c2;--node:#e9e9e3;--seen:#a8c8f0;--dead:#d9b1b1;--cur:#2f6fed;--fr:#f0a020;--ok:#1f9d55;--bd:#deded7}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fg:#ececE6;--mut:#9a9a92;--card:#212120;--line:#55554f;--node:#33332f;--seen:#3b5f8f;--dead:#7a4444;--bd:#37372f}}
+:root[data-theme="dark"]{--bg:#161615;--fg:#ececE6;--mut:#9a9a92;--card:#212120;--line:#55554f;--node:#33332f;--seen:#3b5f8f;--dead:#7a4444;--bd:#37372f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1000px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:0 0 2px}p.s{margin:0 0 12px;color:var(--mut);font-size:13px}
+.tabs,.ctl{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+button{font:inherit;font-size:13px;padding:6px 11px;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:8px;cursor:pointer}
+button.on{background:var(--cur);color:#fff;border-color:var(--cur)}
+.ctl label{font-size:13px;color:var(--mut);display:flex;align-items:center;gap:6px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:8px}
+.gw{overflow-x:auto}svg{width:100%;min-width:640px;height:auto;display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.card h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:2px 4px 6px}
+#log{font:12px/1.5 ui-monospace,Menlo,monospace;height:130px;overflow:auto;padding:0 4px}
+#fr{display:flex;flex-wrap:wrap;gap:4px;padding:0 4px;min-height:26px}
+.chip{border:1px solid var(--fr);border-radius:6px;padding:0 6px;font:12px ui-monospace,monospace}
+#res{padding:0 4px;font-size:13px}
+.lg{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--mut);margin-top:6px}
+.lg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;border:1px solid var(--line)}
+</style><main>
+<h1>Prolog search, animated</h1>
+<p class="s">The six algorithms from <code>graph_search.pl</code> on the same graph. Edge order, costs and heuristics match the Prolog facts.</p>
+<div class="tabs" id="tabs"></div>
+<div class="ctl">
+<button id="play">Play</button><button id="step">Step</button><button id="rst">Reset</button>
+<label>Slow<input type="range" id="spd" min="1" max="10" value="6">Fast</label>
+<span id="cnt" style="font-size:13px;color:var(--mut);align-self:center"></span></div>
+<div class="card gw"><svg id="g" viewBox="0 0 960 470"></svg></div>
+<div class="lg"><span><i style="background:var(--cur)"></i>current</span><span><i style="background:var(--fr)"></i>in frontier</span><span><i style="background:var(--seen)"></i>visited</span><span><i style="background:var(--dead)"></i>backtracked</span><span><i style="background:var(--ok)"></i>solution path</span></div>
+<div class="grid">
+<div class="card"><h2>Frontier (next to expand)</h2><div id="fr"></div><h2 style="margin-top:10px">Result</h2><div id="res"></div></div>
+<div class="card"><h2>Trace</h2><div id="log"></div></div></div>
+</main>
+<script>
+try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+// ---- graph (mirrors edge/2, path_cost/3, heuristic/2 in graph_search.pl) ----
+const chains=[['cheap',3,1],['expensive',3,200],['cycle',3,10],['medium',4,50],['deep',10,100],['short',1,30]];
+const adj={start:[],goal:[],direct_goal:[]},H={goal:0,cheap3:1,cheap2:2,cheap1:3,expensive3:50,expensive2:100,expensive1:150,cycle_end:5,cycle_middle:10,cycle_start:15,medium4:30,medium3:60,medium2:90,medium1:120,deep10:10,deep9:20,deep8:30,deep7:40,deep6:50,deep5:60,deep4:70,deep3:80,deep2:90,deep1:100,short1:25,direct_goal:1,start:30};
+const pos={start:[60,235],goal:[910,235],direct_goal:[530,30]},rowY={short:90,cheap:145,medium:205,cycle:270,expensive:335,deep:425};
+const edges=[];
+function add(a,b,c){(adj[a]=adj[a]||[]).push([b,c]);edges.push([a,b])}
+chains.forEach(([nm,n,c])=>{
+  const ids=[...Array(n)].map((_,i)=>nm==='cycle'?['cycle_start','cycle_middle','cycle_end'][i]:nm+(i+1));
+  ids.forEach((id,i)=>{adj[id]=adj[id]||[];pos[id]=[n===1?530:150+i*760/n,rowY[nm]]});
+  adj.start.push([ids[0],c]);edges.push(['start',ids[0]]);
+  for(let i=0;i<n-1;i++)add(ids[i],ids[i+1],c);
+  if(nm==='cycle')add('cycle_end','cycle_start',1);
+  add(ids[n-1],'goal',c);
+  if(nm==='cycle'){}
+});
+// Prolog edge order from start: cheap1, expensive1, cycle_start, medium1, deep1, short1, direct_goal
+const ord=['cheap1','expensive1','cycle_start','medium1','deep1','short1'];
+adj.start=ord.map(o=>adj.start.find(x=>x[0]===o));adj.start.push(['direct_goal',500]);edges.push(['start','direct_goal']);
+const cost=p=>p.slice(1).reduce((s,n,i)=>s+adj[p[i]].find(x=>x[0]===n)[1],0);
+
+// ---- algorithms: each returns a list of steps {k,cur,path,fr,t} ----
+const st=(k,cur,path,fr,t)=>({k,cur,path:[...path],fr:fr||[],t});
+function dfs(){const S=[];
+  (function go(n,v){if(n==='goal'){S.push(st('goal',n,v,0,'goal reached'));return true}
+    S.push(st('visit',n,v,0,'visit '+n));
+    for(const[m]of adj[n])if(!v.includes(m)&&go(m,[...v,m]))return true;
+    S.push(st('back',n,v,0,'dead end, backtrack from '+n));return false})('start',['start']);return S}
+function ids(){const S=[];
+  for(let d=1;d<=12;d++){S.push(st('note','start',['start'],0,'--- depth limit '+d+' ---'));
+    const go=(n,dl,v)=>{if(n==='goal'){S.push(st('goal',n,v,0,'goal reached at limit '+d));return true}
+      S.push(st('visit',n,v,0,'visit '+n+' (left '+dl+')'));
+      if(dl>0)for(const[m]of adj[n])if(!v.includes(m)&&go(m,dl-1,[...v,m]))return true;
+      S.push(st('back',n,v,0,'backtrack from '+n));return false};
+    if(go('start',d,['start']))break}return S}
+function bfs(){const S=[];let q=[['start']];
+  while(q.length){const p=q.shift(),n=p[p.length-1],fr=q.map(x=>x[x.length-1]);
+    if(n==='goal'){S.push(st('goal',n,p,fr,'goal dequeued'));break}
+    S.push(st('visit',n,p,fr,'dequeue '+n+', enqueue its children'));
+    adj[n].forEach(([m])=>{if(!p.includes(m))q.push([...p,m])})}return S}
+function best(kind){const S=[];const f=(g,h)=>kind==='ucs'?g:kind==='astar'?g+h:h;
+  let q=[{n:'start',g:0,f:f(0,H.start),p:['start']}];
+  while(q.length){const c=q.shift(),fr=q.map(x=>x.n+'('+x.f+')');
+    if(c.n==='goal'){S.push(st('goal',c.n,c.p,fr,'goal popped, cost '+c.g));break}
+    S.push(st('visit',c.n,c.p,fr,'expand '+c.n+'  g='+c.g+' f='+c.f));
+    for(const[m,sc]of adj[c.n]){if(c.p.includes(m))continue;const g=c.g+sc,ch={n:m,g,f:f(g,H[m]),p:[...c.p,m]};
+      let i=q.findIndex(x=>ch.f<=x.f);if(i<0)i=q.length;q.splice(i,0,ch)}}return S}
+const ALG={'DFS':dfs,'BFS':bfs,'IDS':ids,'UCS':()=>best('ucs'),'A*':()=>best('astar'),'Greedy':()=>best('greedy')};
+
+// ---- rendering ----
+const NS='http://www.w3.org/2000/svg',svg=document.getElementById('g');
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e};
+svg.innerHTML='<defs><marker id="ar" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--line)"/></marker></defs>';
+const E={},N={};
+edges.forEach(([a,b])=>{const[x1,y1]=pos[a],[x2,y2]=pos[b],r=12;
+  if(a==='cycle_end'&&b==='cycle_start'){E[a+b]=el('path',{d:`M${x1} ${y1-r} Q${(x1+x2)/2} ${y1-60} ${x2} ${y2-r}`,fill:'none',stroke:'var(--line)','stroke-width':1.5,'marker-end':'url(#ar)'});return}
+  const d=Math.hypot(x2-x1,y2-y1),ux=(x2-x1)/d,uy=(y2-y1)/d;
+  E[a+b]=el('line',{x1:x1+ux*r,y1:y1+uy*r,x2:x2-ux*(r+3),y2:y2-uy*(r+3),stroke:'var(--line)','stroke-width':1.5,'marker-end':'url(#ar)'})});
+Object.keys(pos).forEach(n=>{const[x,y]=pos[n];
+  N[n]=el('circle',{cx:x,cy:y,r:11,fill:'var(--node)',stroke:'var(--line)','stroke-width':2});
+  const t=el('text',{x,y:y+25,'text-anchor':'middle','font-size':10,fill:'var(--mut)'});t.textContent=n});
+
+let cur='DFS',steps=[],i=-1,timer=null;
+const $=id=>document.getElementById(id);
+function load(name){cur=name;steps=ALG[name]();i=-1;stop();draw();
+  [...$('tabs').children].forEach(b=>b.classList.toggle('on',b.textContent===name))}
+function draw(){
+  const seen={},dead={};
+  for(let j=0;j<=i;j++){const s=steps[j];if(s.k==='visit')seen[s.cur]=1;if(s.k==='back'){dead[s.cur]=1}}
+  const s=steps[i]||{path:[],fr:[],cur:null,k:''};
+  const inPath={};s.path.forEach((n,j)=>{if(j)inPath[s.path[j-1]+n]=1});
+  const frn=new Set(s.fr.map(x=>x.replace(/\(.*/,'')));
+  for(const n in N){let f='var(--node)',sk='var(--line)',w=2;
+    if(seen[n])f='var(--seen)';if(dead[n])f='var(--dead)';
+    if(frn.has(n)){sk='var(--fr)';w=4}
+    if(n===s.cur){f=s.k==='goal'?'var(--ok)':'var(--cur)';sk=f}
+    if(s.k==='goal'&&s.path.includes(n))f='var(--ok)';
+    N[n].setAttribute('fill',f);N[n].setAttribute('stroke',sk);N[n].setAttribute('stroke-width',w)}
+  for(const k in E){const on=inPath[k];E[k].setAttribute('stroke',on?(s.k==='goal'?'var(--ok)':'var(--cur)'):'var(--line)');E[k].setAttribute('stroke-width',on?4:1.5)}
+  $('fr').innerHTML=s.fr.length?s.fr.map(x=>`<span class="chip">${x}</span>`).join(''):'<span style="color:var(--mut);font-size:12px">'+(cur==='DFS'||cur==='IDS'?'(uses the call stack, no explicit frontier)':'empty')+'</span>';
+  const lg=$('log');lg.innerHTML=steps.slice(0,i+1).map((x,j)=>`<div style="color:${x.k==='back'?'var(--dead)':x.k==='goal'?'var(--ok)':x.k==='note'?'var(--mut)':'inherit'}">${j+1}. ${x.t}</div>`).join('');lg.scrollTop=lg.scrollHeight;
+  $('cnt').textContent=`step ${Math.max(i+1,0)} / ${steps.length}`;
+  const last=steps[steps.length-1];
+  $('res').innerHTML=i===steps.length-1&&last.k==='goal'?`<b>${last.path.join(' → ')}</b><br>${last.path.length-1} edges, cost ${cost(last.path)}`:'<span style="color:var(--mut)">run to the end to see the path found</span>'}
+function next(){if(i<steps.length-1){i++;draw()}else stop()}
+function stop(){clearInterval(timer);timer=null;$('play').textContent='Play'}
+function play(){if(timer){stop();return}if(i>=steps.length-1)i=-1;$('play').textContent='Pause';
+  const ms=1300-$('spd').value*120;timer=setInterval(next,ms)}
+$('play').onclick=play;$('step').onclick=()=>{stop();next()};$('rst').onclick=()=>load(cur);
+$('spd').oninput=()=>{if(timer){stop();play()}};
+Object.keys(ALG).forEach(n=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>load(n);$('tabs').appendChild(b)});
+load('DFS');
+</script>
+</template>
+
 <script>
 (function () {
   'use strict';
@@ -1340,6 +1482,21 @@
     document.getElementById('videoClose').addEventListener('click', closeVideo);
     vDlg.addEventListener('click', function (e) { if (e.target === vDlg) closeVideo(); });
     vDlg.addEventListener('close', function () { vEl.pause(); vEl.removeAttribute('src'); vEl.load(); });
+  }
+
+  /* Prolog animation popup (self-contained page rendered in an iframe) */
+  var pDlg = document.getElementById('prologDialog');
+  var pFrame = document.getElementById('prologFrame');
+  var pTpl = document.getElementById('prologAnimSrc');
+  var pBtn = document.getElementById('prologBtn');
+  if (pDlg && pFrame && pTpl && pBtn && typeof pDlg.showModal === 'function') {
+    pBtn.addEventListener('click', function () {
+      pFrame.srcdoc = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"></head><body>' + pTpl.innerHTML + '</body></html>';
+      pDlg.showModal();
+    });
+    document.getElementById('prologClose').addEventListener('click', function () { pDlg.close(); });
+    pDlg.addEventListener('click', function (e) { if (e.target === pDlg) pDlg.close(); });
+    pDlg.addEventListener('close', function () { pFrame.srcdoc = ''; });
   }
 })();
 </script>
