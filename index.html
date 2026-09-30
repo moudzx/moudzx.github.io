@@ -6,8 +6,7 @@
 <title>Mohamad Mostafa</title>
 <meta name="description" content="Software engineer from Tripoli, Lebanon. Full-stack and systems: Linux kernel, assembly, ASP.NET, React." />
 <meta name="author" content="Mohamad Mostafa" />
-<meta name="theme-color" content="#dedacd" />
-<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+<meta name="theme-color" content="#0a0a0a" />
 <link rel="canonical" href="https://moudzx.github.io/" />
 
 <meta property="og:type" content="website" />
@@ -27,52 +26,26 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #dedacd;
-    --bg2: #e8e4d8;
-    --card: #d2cdbe;
-    --card-h: #c9c4b3;
-    --border: rgba(30,28,18,0.15);
-    --border-h: rgba(30,28,18,0.3);
-    --text: #1f1e18;
-    --text2: #423f33;
-    --muted: #5e5946;
-    --accent: #8a7250;
-    --accent2: #6b5738;
-  }
-  html.dark-mode {
-    --bg: #2b2c31;
-    --bg2: #33343a;
-    --card: #3c3d44;
-    --card-h: #45464e;
+    --bg: #0a0a0a;
+    --bg2: rgba(0,0,0,0.3);
+    --card: rgba(255,255,255,0.08);
+    --card-h: rgba(255,255,255,0.12);
     --border: rgba(255,255,255,0.13);
     --border-h: rgba(255,255,255,0.28);
     --text: #f5f5f0;
     --text2: #e0dfd8;
-    --muted: #b0aea4;
+    --muted: #b4b2aa;
     --accent: #c8c0b0;
     --accent2: #e8e0d0;
+    --grad: linear-gradient(160deg, #000000 0%, #0a0a0a 52%, #1f1f1f 100%);
     color-scheme: dark;
   }
-  html.dark-mode .project { box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 14px 32px -22px rgba(0,0,0,.6); }
-  html.dark-mode .project:hover { box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 26px 44px -22px rgba(0,0,0,.7); }
-  .theme-toggle {
-    width: 34px; height: 34px; border-radius: 50%;
-    border: 1px solid var(--border); background: transparent; color: var(--text2);
-    display: flex; align-items: center; justify-content: center; cursor: pointer;
-    transition: border-color .2s;
-  }
-  .theme-toggle:hover { border-color: var(--border-h); }
-  .theme-toggle svg { width: 16px; height: 16px; }
-  .theme-toggle .icon-sun { display: none; }
-  html.dark-mode .theme-toggle .icon-sun { display: block; }
-  html.dark-mode .theme-toggle .icon-moon { display: none; }
 
   html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body {
     font-family: 'Inter', sans-serif;
-    background: var(--bg); color: var(--text);
+    background: var(--bg) var(--grad) fixed; color: var(--text);
     line-height: 1.6; overflow-x: hidden;
-    transition: background .3s, color .3s;
   }
   a { color: inherit; }
   ::selection { background: rgba(138,114,80,0.25); }
@@ -261,13 +234,13 @@
   }
   .project {
     position: relative; display: flex; flex-direction: column; overflow: hidden;
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 24px;
-    box-shadow: 0 1px 2px rgba(30,28,18,.04), 0 14px 32px -22px rgba(30,28,18,.22);
+    background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 24px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 14px 32px -22px rgba(0,0,0,.6);
     transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .3s;
   }
   .project:hover {
     transform: translateY(-6px); border-color: var(--border-h);
-    box-shadow: 0 2px 4px rgba(30,28,18,.05), 0 26px 44px -22px rgba(30,28,18,.28);
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 26px 44px -22px rgba(0,0,0,.7);
   }
   .project-bg {
     position: relative; flex: none; width: 100%; height: 170px;
@@ -475,10 +448,6 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-    </button>
   </div>
 </nav>
 
@@ -990,7 +959,7 @@
     </article>
 
     <article class="project">
-      <div class="project-bg"><svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ffd9a0" stroke-width="0.8"><defs><linearGradient id="pjSky19" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140e06"/><stop offset=".45" stop-color="#21160a"/><stop offset=".78" stop-color="#33200d"/><stop offset="1" stop-color="#4a2e10"/></linearGradient></defs><rect x="-600" y="-100" width="1600" height="500" fill="url(#pjSky19)" stroke="none"/>
+      <div class="project-bg"><svg data-rest="9" preserveAspectRatio="xMidYMid meet" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ffd9a0" stroke-width="0.8"><defs><linearGradient id="pjSky19" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140e06"/><stop offset=".45" stop-color="#21160a"/><stop offset=".78" stop-color="#33200d"/><stop offset="1" stop-color="#4a2e10"/></linearGradient></defs><rect x="-600" y="-100" width="1600" height="500" fill="url(#pjSky19)" stroke="none"/>
   <rect x="14" y="14" width="372" height="272"/>
   <text x="22" y="30" font-size="8" font-family="monospace" fill="#ffd9a0" stroke="none">$ spim -f maze.s<animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.020;0.040;0.930;1"/></text>
   <text x="22" y="42" font-size="6" font-family="monospace" fill="#ffd9a0" stroke="none">SPIM Version 8.0 of January 8, 2010<animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.050;0.070;0.930;1"/></text>
@@ -1075,7 +1044,7 @@
   <rect x="320" y="250" width="20" height="20" fill="#ffd9a0" fill-opacity="0.2"/>
   <rect x="340" y="250" width="20" height="20" fill="#ffd9a0" fill-opacity="0.2"/>
 <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.500;0.520;0.930;1"/></g>
-<rect x="124" y="46.5" width="3.2" height="6" fill="#ffd9a0" stroke="none"><animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.5;.5;1"/></rect><g><rect x="18" y="74" width="364" height="9" rx="1.5" fill="#ffb13b" fill-opacity="0.22" stroke="#ffb13b" stroke-opacity="0.7" stroke-width="0.5"><animate attributeName="y" dur="3s" repeatCount="indefinite" calcMode="discrete" values="73;83;93;103;113;123"/></rect><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.300;0.320;0.450;1"/></g><g><rect x="18" y="164" width="150" height="10" rx="1.5" fill="#ffb13b" fill-opacity="0.22" stroke="#ffb13b" stroke-opacity="0.7" stroke-width="0.5"><animate attributeName="y" dur="4.5s" repeatCount="indefinite" calcMode="discrete" values="164;176;188;200;212;224;236;248;260"/></rect><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.620;0.640;0.930;1"/></g><g><path d="M290 200V240H330V200" stroke="#ff7a45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100" pathLength="100"><animate attributeName="stroke-dashoffset" dur="4s" repeatCount="indefinite" values="100;0;0" keyTimes="0;.85;1"/></path><circle r="3.2" fill="#ff7a45" stroke="none"><animateMotion dur="4s" repeatCount="indefinite" path="M290 200V240H330V200" keyPoints="0;1;1" keyTimes="0;.85;1" calcMode="linear"/></circle><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.600;0.620;0.930;1"/></g></svg></div>
+<rect x="124" y="46.5" width="3.2" height="6" fill="#ffd9a0" stroke="none"><animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.5;.5;1"/></rect><g><rect x="18" y="74" width="364" height="9" rx="1.5" fill="#ffb13b" fill-opacity="0.22" stroke="#ffb13b" stroke-opacity="0.7" stroke-width="0.5"><animate attributeName="y" dur="3s" repeatCount="indefinite" calcMode="discrete" values="73;83;93;103;113;123"/></rect><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.300;0.320;0.450;1"/></g><g><rect x="18" y="164" width="150" height="10" rx="1.5" fill="#ffb13b" fill-opacity="0.22" stroke="#ffb13b" stroke-opacity="0.7" stroke-width="0.5"><animate attributeName="y" dur="4.5s" repeatCount="indefinite" calcMode="discrete" values="164;176;188;200;212;224;236;248;260"/></rect><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.620;0.640;0.930;1"/></g><g><path d="M290 200V240H330V200" stroke="#ff7a45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100" pathLength="100"><animate attributeName="stroke-dashoffset" dur="5s" repeatCount="indefinite" values="100;0;0" keyTimes="0;.68;1"/></path><circle r="3.2" fill="#ff7a45" stroke="none"><animateMotion dur="5s" repeatCount="indefinite" path="M290 200V240H330V200" keyPoints="0;1;1" keyTimes="0;.68;1" calcMode="linear"/></circle><animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.600;0.620;0.930;1"/></g></svg></div>
       <div class="project-body">
       <h3>MIPS32 CryptArithmetic</h3>
       <p>Cryptographic memory maze utility in MIPS32 Assembly. A project for Computer Architecture class - Lebanese University.</p>
@@ -1175,12 +1144,11 @@
 <template id="ofSrc">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#dedacd;--card:#d2cdbe;--border:rgba(30,28,18,.18);--text:#1f1e18;--muted:#5e5946;--accent:#8a7250;--on:#1f1e18;--onfg:#dedacd;--bad:#a63d2f;--good:#3f6b45}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}}
-:root[data-theme="dark"]{--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}
+:root{--bg:#0a0a0a;--card:#1c1c1c;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#0a0a0a;--bad:#e07a6a;--good:#8cc796}
+:root[data-theme="dark"]{--bg:#0a0a0a;--card:#1c1c1c;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#0a0a0a;--bad:#e07a6a;--good:#8cc796}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
+body{background:var(--bg) linear-gradient(160deg,#000000 0%,#0a0a0a 52%,#1f1f1f 100%) fixed;color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
 main{max-width:760px;margin:0 auto}
 h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:clamp(32px,7vw,48px);letter-spacing:-.01em;padding-right:44px}
 .sub{color:var(--muted);margin:6px 0 24px;font-size:14px}
@@ -1242,7 +1210,7 @@ input{font:inherit;font-size:14px;color:var(--text);background:var(--bg);border:
 <div class="card"><div class="lbl">Assembly</div><div id="snip" class="snip"></div></div>
 </main>
 <script>
-try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+document.documentElement.setAttribute('data-theme','dark');
 const S={n:8,signed:true,u:127n,wraps:0,fl:{CF:0,OF:0,SF:0,ZF:0}};
 const REG={8:["al","bl"],16:["ax","bx"],32:["eax","ebx"]};
 const $=id=>document.getElementById(id);
@@ -1341,12 +1309,11 @@ init();
 <template id="rpSrc">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#dedacd;--card:#d2cdbe;--border:rgba(30,28,18,.18);--text:#1f1e18;--muted:#5e5946;--accent:#8a7250;--on:#1f1e18;--onfg:#dedacd;--bad:#a63d2f;--good:#3f6b45}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}}
-:root[data-theme="dark"]{--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}
+:root{--bg:#0a0a0a;--card:#1c1c1c;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#0a0a0a;--bad:#e07a6a;--good:#8cc796}
+:root[data-theme="dark"]{--bg:#0a0a0a;--card:#1c1c1c;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#0a0a0a;--bad:#e07a6a;--good:#8cc796}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
+body{background:var(--bg) linear-gradient(160deg,#000000 0%,#0a0a0a 52%,#1f1f1f 100%) fixed;color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
 main{max-width:760px;margin:0 auto}
 h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:clamp(32px,7vw,48px);letter-spacing:-.01em;padding-right:44px}
 .sub{color:var(--muted);margin:6px 0 24px;font-size:14px}
@@ -1416,7 +1383,7 @@ button.add{font-family:ui-monospace,Menlo,monospace;font-size:13px}
 <div class="card"><div class="lbl">C</div><div id="snip" class="snip"></div></div>
 </main>
 <script>
-try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+document.documentElement.setAttribute('data-theme','dark');
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const V=[{n:'age',v:'26',t:'auto'},{n:'name',v:'Moss',t:'auto'},{n:'grade',v:'A',t:'char'},{n:'pi',v:'3.14159',t:'double'},{n:'admin',v:'true',t:'bool'},{n:'mask',v:'255',t:'hex'}];
@@ -1612,12 +1579,11 @@ reset();
 <template id="crySrc">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#dedacd;--card:#d2cdbe;--border:rgba(30,28,18,.18);--text:#1f1e18;--muted:#5e5946;--accent:#8a7250;--on:#1f1e18;--onfg:#dedacd;--bad:#a63d2f;--good:#3f6b45}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}}
-:root[data-theme="dark"]{--bg:#2b2c31;--card:#3c3d44;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#2b2c31;--bad:#e07a6a;--good:#8cc796}
+:root{--bg:#0a0a0a;--card:#1c1c1c;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#0a0a0a;--bad:#e07a6a;--good:#8cc796}
+:root[data-theme="dark"]{--bg:#0a0a0a;--card:#1c1c1c;--border:rgba(255,255,255,.16);--text:#f5f5f0;--muted:#b0aea4;--accent:#c8c0b0;--on:#f5f5f0;--onfg:#0a0a0a;--bad:#e07a6a;--good:#8cc796}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
+body{background:var(--bg) linear-gradient(160deg,#000000 0%,#0a0a0a 52%,#1f1f1f 100%) fixed;color:var(--text);font-family:Inter,system-ui,sans-serif;font-weight:300;line-height:1.5;padding:28px 20px 48px}
 main{max-width:900px;margin:0 auto}
 h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:clamp(32px,7vw,48px);letter-spacing:-.01em;padding-right:44px}
 .sub{color:var(--muted);margin:6px 0 24px;font-size:14px}
@@ -1704,7 +1670,7 @@ srlv $t3, $t0, $t3      # v &gt;&gt; (32 - r)   (shift amount is taken mod 32)
 or   $v0, $t2, $t3      # $v0 = cipher</div></div>
 </main>
 <script>
-try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+document.documentElement.setAttribute('data-theme','dark');
 const $=id=>document.getElementById(id);
 const PR=[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53];
 const hex=v=>(v>>>0).toString(16).toUpperCase().padStart(8,'0');
@@ -2280,13 +2246,12 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){try{parent.
 
 <template id="prologAnimSrc">
 <style>
-:root{--bg:#fafaf7;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--line:#c9c9c2;--node:#e9e9e3;--seen:#a8c8f0;--dead:#d9b1b1;--cur:#2f6fed;--fr:#f0a020;--ok:#1f9d55;--bd:#deded7}
+:root{--bg:#0a0a0a;--fg:#ececE6;--mut:#9a9a92;--card:#1c1c1c;--line:#55554f;--node:#33332f;--seen:#3b5f8f;--dead:#7a4444;--bd:rgba(255,255,255,.16)}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fg:#ececE6;--mut:#9a9a92;--card:#212120;--line:#55554f;--node:#33332f;--seen:#3b5f8f;--dead:#7a4444;--bd:#37372f}}
-:root[data-theme="dark"]{--bg:#161615;--fg:#ececE6;--mut:#9a9a92;--card:#212120;--line:#55554f;--node:#33332f;--seen:#3b5f8f;--dead:#7a4444;--bd:#37372f}
+:root[data-theme="dark"]{--bg:#0a0a0a;--fg:#ececE6;--mut:#9a9a92;--card:#1c1c1c;--line:#55554f;--node:#33332f;--seen:#3b5f8f;--dead:#7a4444;--bd:rgba(255,255,255,.16)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg) linear-gradient(160deg,#000000 0%,#0a0a0a 52%,#1f1f1f 100%) fixed;color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:1000px;margin:0 auto;padding:16px}
 h1{font-size:20px;margin:0 0 2px}p.s{margin:0 0 12px;color:var(--mut);font-size:13px}
 .tabs,.ctl{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
@@ -2319,7 +2284,7 @@ button.on{background:var(--cur);color:#fff;border-color:var(--cur)}
 <div class="card"><h2>Trace</h2><div id="log"></div></div></div>
 </main>
 <script>
-try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+document.documentElement.setAttribute('data-theme','dark');
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){try{parent.document.querySelector('dialog[open]').close()}catch(x){}}});
 // ---- graph (mirrors edge/2, path_cost/3, heuristic/2 in graph_search.pl) ----
 const chains=[['cheap',3,1],['expensive',3,200],['cycle',3,10],['medium',4,50],['deep',10,100],['short',1,30]];
@@ -2417,12 +2382,11 @@ load('DFS');
 
 <template id="regexSrc">
 <style>
-:root{--bg:#fafaf7;--fg:#1d1d1b;--mut:#6b6b66;--card:#fff;--bd:#deded7;--acc:#2f6fed;--ok:#1f9d55;--bad:#c2413b;--code:#f1f1ec}
+:root{--bg:#0a0a0a;--fg:#ececE6;--mut:#9a9a92;--card:#1c1c1c;--bd:rgba(255,255,255,.16);--code:#2a2a28}
 :root{box-sizing:border-box}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fg:#ececE6;--mut:#9a9a92;--card:#212120;--bd:#37372f;--code:#2a2a28}}
-:root[data-theme="dark"]{--bg:#161615;--fg:#ececE6;--mut:#9a9a92;--card:#212120;--bd:#37372f;--code:#2a2a28}
+:root[data-theme="dark"]{--bg:#0a0a0a;--fg:#ececE6;--mut:#9a9a92;--card:#1c1c1c;--bd:rgba(255,255,255,.16);--code:#2a2a28}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg) linear-gradient(160deg,#000000 0%,#0a0a0a 52%,#1f1f1f 100%) fixed;color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:1000px;margin:0 auto;padding:16px}
 h1{font-size:20px;margin:0 0 2px;padding-right:40px}p.s{margin:0 0 12px;color:var(--mut);font-size:13px}
 .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
@@ -2453,7 +2417,7 @@ input:focus{outline:2px solid var(--acc);outline-offset:1px}
 <div class="row" id="ex"></div></div>
 </main>
 <script>
-try{var _d=parent.document.documentElement.classList.contains('dark-mode');document.documentElement.setAttribute('data-theme',_d?'dark':'light')}catch(e){}
+document.documentElement.setAttribute('data-theme','dark');
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){try{parent.document.querySelector('dialog[open]').close()}catch(x){}}});
 var P=[
 {n:'Email',ok:['a.b+c@mail.example.com','dev@site.io'],no:['no-at.example.com','a@b.c'],
@@ -3134,23 +3098,6 @@ input{flex:1;min-width:0;padding:0;border:0;outline:0;background:transparent;col
 (function () {
   'use strict';
 
-  /* Theme: light by default, remembers choice */
-  var root = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-  var metaTheme = document.querySelector('meta[name="theme-color"]');
-  function applyTheme(dark) {
-    root.classList.toggle('dark-mode', dark);
-    toggle.setAttribute('aria-pressed', String(dark));
-    toggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-    if (metaTheme) metaTheme.setAttribute('content', dark ? '#2b2c31' : '#dedacd');
-  }
-  applyTheme(root.classList.contains('dark-mode'));
-  toggle.addEventListener('click', function () {
-    var dark = !root.classList.contains('dark-mode');
-    applyTheme(dark);
-    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
-  });
-
   /* Category filters (projects, certificates) */
   document.querySelectorAll('.tabs').forEach(function (group) {
     var tabs = group.querySelectorAll('.tab');
@@ -3192,10 +3139,11 @@ input{flex:1;min-width:0;padding:0;border:0;outline:0;background:transparent;col
       el.style.setProperty('--d', (i / n * 0.8).toFixed(3) + 's');
     });
     if (svg.pauseAnimations && svg.querySelector('animate, animateMotion')) {
+      var rest = parseFloat(svg.getAttribute('data-rest')) || 0;
       svg.pauseAnimations();
-      svg.setCurrentTime(0);
-      var play = function () { if (!reduceMotion) svg.unpauseAnimations(); };
-      var stop = function () { svg.pauseAnimations(); svg.setCurrentTime(0); };
+      svg.setCurrentTime(rest);
+      var play = function () { if (reduceMotion) return; svg.setCurrentTime(0); svg.unpauseAnimations(); };
+      var stop = function () { svg.pauseAnimations(); svg.setCurrentTime(rest); };
       card.addEventListener('mouseenter', play);
       card.addEventListener('mouseleave', stop);
       card.addEventListener('focusin', play);
