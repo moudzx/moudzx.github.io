@@ -92,11 +92,23 @@
     font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--muted); margin-bottom: 36px;
   }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
-  .hero-portrait { width: clamp(200px, 24vw, 320px); flex-shrink: 0; }
-  .hero-portrait img {
-    width: 100%; height: auto; display: block;
+  .hero-portrait {
+    width: clamp(260px, 32vw, 440px); flex-shrink: 0; container-type: inline-size;
+    position: relative; overflow: hidden; aspect-ratio: 640 / 760;
+  }
+  .hero-ascii, .hero-photo { position: absolute; top: 0; left: 0; transition: opacity .6s ease; }
+  .hero-ascii {
+    inset: 0; margin: 0; white-space: pre; color: var(--text2); user-select: none;
+    font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: 2.083cqw; line-height: 1.2; letter-spacing: 0;
+    font-kerning: none; font-variant-ligatures: none; opacity: 1;
+  }
+  .hero-photo {
+    width: 112.5%; max-width: none; height: auto; margin-left: -9.375%; display: block; opacity: 0;
     filter: grayscale(100%) contrast(1.08) brightness(.95);
   }
+  .hero-portrait.show-photo .hero-ascii { opacity: 0; }
+  .hero-portrait.show-photo .hero-photo { opacity: 1; }
 
   .hero { position: relative; overflow: hidden; }
   .hero::before {
@@ -425,7 +437,7 @@
   }
   @media (max-width: 860px) {
     .hero-content { flex-direction: column-reverse; align-items: flex-start; gap: 32px; }
-    .hero-portrait { width: clamp(150px, 45vw, 240px); }
+    .hero-portrait { width: clamp(240px, 78vw, 340px); }
     .cert-list { column-count: 1; }
   }
   @media (max-width: 560px) {
@@ -472,10 +484,57 @@
         <a href="https://github.com/moudzx/moudzx.github.io/raw/refs/heads/main/Mohamad_Mostafa_CV.docx" download class="btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>CV</a>
       </div>
     </div>
-    <div class="hero-portrait">
+    <div class="hero-portrait" id="heroPortrait">
+      <pre class="hero-ascii" id="heroAscii" role="img" aria-label="ASCII portrait of Mohamad Mostafa">
+
+                                   ',,:,`ll,,"^'
+                                ,!!&lt;__--_}?][]]}l"
+                           .&gt;~]&lt;?-_+~_][}?-_-_~&lt;&gt;?i-l`.
+                         'i_+~~[[+??-++_?{1}{[_&gt;i&gt;i&lt;+~&lt;!^
+                       ":i-~&lt;&lt;?+&gt;i&lt;_&gt;&lt;&gt;&gt;&gt;&lt;~++~-+&lt;+~iiiii-&lt;
+                     "_-[--?&gt;+&lt;Ii!&lt;!&gt;&lt;&gt;&gt;ii!i&gt;_-_[-&gt;iii&gt;&lt;~{&lt;
+                    `?&lt;+]]&lt;+ll;::I!!l;;Il&lt;___--}[+&gt;iii!&lt;&gt;&gt;_:
+                    &gt;il!!&gt;iI:&lt;)vJmdbq0Uv|?&lt;~&lt;&lt;&lt;-]-+&lt;i!!!ill-I
+                   .]i!!!il_LW$$$$$$$$$$$#Qr}?_~~&lt;~iii!!!!li~
+                   ._!&lt;??_xW$$BBBBBBBBBB@$$$Wbw0JYv)&gt;;!!!!!l]^
+                   '~!!-}q$$B@@@$@@@@@@@@@B@$$$$$$8a0{lI!!li_.
+                    ,&lt;?[x$@BBBB@@@@@@@@@@@@@@BBBBB$$obL?I!l+^
+                    .&lt;{~CB$$$$$$$$$$$@@@@@@@B@@$$$@@hwhUl!&lt;"
+                    .+?u$$&amp;pUrnYQwb*8@@@@@$$$$@B%&amp;%$WwbxI!l
+                     ~-*BU/jxvn/1))tYo@@@$aX/1}]?-_tOdkL!!:
+                     &gt;}8*08$W&amp;8WpLLwp&amp;$@@BwLYcJZqbqX)[Lb_l`
+                   '&lt;&gt;[B$$$hvUt]_ccQ*h@@BpwzrcYQwakhhCvq&lt;;
+                   }pmr$@B@#b*pYLqk*%WB$%mb0hd1i1c{uqpbQ!,
+                   )mOZ$@@@$$$B8&amp;&amp;@$@$@$%q#B888ookZdodbz1Q~
+                   &lt;8UZ$@@@@B@@B$$WB$@BB@om&amp;$B@$$$$$$BkzvX!
+                   18rm$B@@@@@$@8qW8MB$$@aab*$B@@@BB@%dxJ[
+                   f@vJ@B@@@@@8M8dwYXZhhZuJmU@B@@@@@@hm}0&gt;
+                   _$0n$B@@@$$B$B*CuxrJz||cmW$$@@@@$*dc}Q!
+                    jz)&amp;$@@$WmUu|[}[]i/{?~+/Z#%$$@$8pd[wz.
+                     &gt;[cb%@w{~_)xczjcXUj([)1[[1v*$%bdz-U&gt;
+                     &gt;-)vw$z_Q#aqmwZmZczU/vzczt_/%omJ[&lt;
+                     "_?|rZxm$$$$#hpqqpbha#8B$$n/qQv}&gt;l
+                      ;&gt;+[))d$$BBoL[+?-_)zo$@@@Cjv|]&lt;!
+                       "i!+}1Ja$$$$bC(YC*@$$$aO/[~iiI.
+                         r?I-?(YJYk%Bb*oda##Q|[_;!?;
+                       .^U&amp;|I&gt;_?[)fUujjt)1({_&lt;ll]Oj^i"
+                      ^i;|$%C-Il&gt;+~&lt;+++_-_&lt;!ll-cwk("i!I'
+                    'l&lt;!,_#*WhY)_!IlI;IIIIi-)zOmL(:;llll".
+                  `;&lt;+IIi!bhdkhbOXnnrttjxnzCQLc1!,:;IIIIII,^.
+             .`,:I&gt;~&lt;l"!&gt;l(ZpwZZmm0UzzzXYYXn(+;":::;;;;I;;:I;:"'.
+        .'":I!l!i&gt;&gt;&gt;i:,!!!;&gt;tUO0CJYzzYzut[&lt;;"":;:,;;;;:;Il;:IlI::,""^'.
+   .'^:;Il!i!II!!!!iI",lIIl;:I+rJUzrt{_!;:::::,,"Il:,:;Il!l,ll;,;;:;;:,,"`'.
+^":;IlllllI;;IlllllI,^,;;;;I;^.,1)i^'^,:;;;;;:,":l;:;;IIIII",::;;;;;;;;:::,,"^`'
+,;II;I;;I::;III;;;;;:^"::::,``,^i&lt;'""^,::,,,,,^";;;;;;;;::,,:::::::;::,,:,::;I;:
+,::::::::"^^,::,,:::,`^",,"''^"^;I,,^^^^,,"""^";:,,,:,,"",,,,,,,,,,""",,,,:::,"^
+,,,,,,,,,,"``^"",,,,"'^^"^'`^^^""^^^^^^``^"^`^,,,,""^^""""""""""^^^",,^",,"^````
+^^^^^^^^^^^^^^^^^^^^^.``'.`^^``^^`````^^''`.`"^^^^^^``^^^^^^^^^`'`^"^`^"^`''````
+```````'`````````````.''''''''''''''''''''.'`````''````''''``'''````'```'''`````
+..................... .........'...........'....................................
+</pre>
       <picture>
         <source srcset="portrait.webp" type="image/webp" />
-        <img src="portrait.jpg" alt="Portrait of Mohamad Mostafa" width="720" height="968" fetchpriority="high" decoding="async" />
+        <img class="hero-photo" src="portrait.jpg" alt="Portrait of Mohamad Mostafa" width="720" height="968" decoding="async" />
       </picture>
     </div>
   </div>
@@ -3333,6 +3392,37 @@ input{flex:1;min-width:0;padding:0;border:0;outline:0;background:transparent;col
   framePopup({ btn: 'ofBtn', dlg: 'ofDialog', frame: 'ofFrame', tpl: 'ofSrc', close: 'ofClose' });
   framePopup({ btn: 'rpBtn', dlg: 'rpDialog', frame: 'rpFrame', tpl: 'rpSrc', close: 'rpClose' });
   framePopup({ btn: 'cryBtn', dlg: 'cryDialog', frame: 'cryFrame', tpl: 'crySrc', close: 'cryClose' });
+})();
+</script>
+<script>
+(function () {
+  var box = document.getElementById('heroPortrait');
+  var hero = document.getElementById('home');
+  if (!box || !hero) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { box.classList.add('show-photo'); return; }
+  var prev = null;
+
+  function shadeX() {
+    var tf = getComputedStyle(hero, '::after').transform;
+    if (!tf || tf === 'none') return null;
+    var m = tf.match(/matrix\(([^)]+)\)/);
+    if (!m) return null;
+    var tx = parseFloat(m[1].split(',')[4]);
+    return hero.getBoundingClientRect().width / 2 + tx;
+  }
+
+  function loop() {
+    var x = shadeX();
+    if (x !== null) {
+      var h = hero.getBoundingClientRect(), b = box.getBoundingClientRect();
+      var target = b.left - h.left + b.width / 2;
+      if (prev !== null && prev < target && x >= target) box.classList.toggle('show-photo');
+      prev = x;
+    }
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
 })();
 </script>
 </body>
